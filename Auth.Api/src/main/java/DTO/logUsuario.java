@@ -2,6 +2,10 @@ package DTO;
 
 public class logUsuario {
 
+    public logUsuario(String senhaUser) {
+        this.nomeUser = nomeUser;
+        this.senhaUser = senhaUser;
+    }
 
     public String nomeUser;
     public String sobreUser;
