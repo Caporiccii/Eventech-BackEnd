@@ -10,23 +10,26 @@ import java.util.ArrayList;
 @RestController
 public class logController {
     public boolean isValid = true;
-    logUser log ;
+    logUser log;
     ArrayList<logUser> logLista = new ArrayList<>();
+
     @GetMapping("/users")
-    public ArrayList<logUser> getLogin ()
-    {
-           return  logLista;
+    public ArrayList<logUser> getLogin() {
+        return logLista;
     }
+
     // endpoint apenas para teste, ele sera movido para a api de crud
     @PostMapping("/log/{nome}/{senha}")
-    public void addLogin (@PathVariable("nome") String nome ,
-                            @PathVariable("senha") String senha) {
-        log = new logUser(nome,senha);
-         logLista.add(log);
+    public void addLogin(@PathVariable("nome") String nome,
+                         @PathVariable("senha") String senha) {
+        log = new logUser(nome, senha);
+        logLista.add(log);
     }
+
     @GetMapping("/log")
-    public boolean logUser(){
+    public boolean logUser() {
+ //if (log.nomeLog.contains(logLista.toString() && log.senhaLog.contains(logLista.toString())))
 
         return isValid;
     }
-    }
+}
