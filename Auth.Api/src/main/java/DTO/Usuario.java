@@ -1,7 +1,11 @@
 package DTO;
 
-public class logUsuario {
+public class Usuario {
 
+    public Usuario(String senhaUser, String nomeUser) {
+        this.nomeUser = nomeUser;
+        this.senhaUser = senhaUser;
+    }
 
     public String nomeUser;
     public String sobreUser;
@@ -36,7 +40,7 @@ public class logUsuario {
         return dateUser;
     }
 
-    public logUsuario(String nomeUser, String sobreUser, String emailUser, int numberPhone, String senhaUser, String dateUser) {
+    public Usuario(String nomeUser, String sobreUser, String emailUser, int numberPhone, String senhaUser, String dateUser) {
         this.nomeUser = nomeUser;
         this.sobreUser = sobreUser;
         this.emailUser = emailUser;
