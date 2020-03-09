@@ -2,10 +2,11 @@ package Service;
 
 
 import DTO.logUser;
+import Interface.IValidationLog;
 
 import java.util.ArrayList;
 
-public class LoginValidationService {
+public class LoginValidationService implements IValidationLog {
     public String nome;
     public String senha;
     logUser log = new logUser(nome,senha);
