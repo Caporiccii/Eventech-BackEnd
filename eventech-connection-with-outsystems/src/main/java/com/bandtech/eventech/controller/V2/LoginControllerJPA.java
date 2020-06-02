@@ -49,13 +49,13 @@ public class LoginControllerJPA {
         }
     }
 
-    @PostMapping("/empresa/{isActive}")
+    @PostMapping("/empresa/{isActive}/CompanyJPA")
     public ResponseEntity logouEmpresa(@RequestBody CompanyJPA companyJPA){
        companyJPA.setActive(false);
        return status(201).build();
     }
 
-    @PostMapping("/user/{isActive}")
+    @PostMapping("/user/{isActive}/UserJPA")
     public ResponseEntity logouUser(@RequestBody UserJPA user){
       user.setActive(false);
       return status(201).build();

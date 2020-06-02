@@ -13,19 +13,19 @@ import java.util.Optional;
 import static org.springframework.http.ResponseEntity.*;
 
 @RestController
-@RequestMapping("/v2/users")
+@RequestMapping("/v2/users/UserJPA")
 public class UserControllerJPA {
     @Autowired
     private IUserRepository repository;
 
-    @PostMapping("/UserJPA")
+    @PostMapping
     public ResponseEntity create(@RequestBody UserJPA user) {
         repository.save(user);
 
         return status(201).build();
     }
 
-    @GetMapping("/UserJPA")
+    @GetMapping
     public ResponseEntity get() {
         List<UserJPA> user = repository.findAll();
 

@@ -13,7 +13,7 @@ import java.util.Optional;
 import static org.springframework.http.ResponseEntity.*;
 
 @RestController
-@RequestMapping("/v2/address")
+@RequestMapping("/v2/address/AddressJPA")
 public class AddressControllerJPA {
       @Autowired
     IAdressRepository repository;

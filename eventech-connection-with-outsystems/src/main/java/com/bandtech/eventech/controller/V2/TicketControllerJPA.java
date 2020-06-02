@@ -13,7 +13,7 @@ import static org.springframework.http.ResponseEntity.*;
 
 
 @RestController
-@RequestMapping("/v2/tickets")
+@RequestMapping("/v2/tickets/TicketJPA")
 public class TicketControllerJPA {
 
     @Autowired

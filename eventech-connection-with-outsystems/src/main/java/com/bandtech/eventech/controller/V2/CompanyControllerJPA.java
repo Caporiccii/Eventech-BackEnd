@@ -12,7 +12,7 @@ import java.util.Optional;
 import static org.springframework.http.ResponseEntity.*;
 
 @RestController
-@RequestMapping("/v2/companys")
+@RequestMapping("/v2/companys/CompanyJPA ")
 public class CompanyControllerJPA {
 
     @Autowired

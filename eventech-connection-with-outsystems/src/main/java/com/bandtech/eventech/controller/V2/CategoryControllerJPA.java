@@ -12,7 +12,7 @@ import java.util.Optional;
 import static org.springframework.http.ResponseEntity.*;
 
 @RestController
-@RequestMapping("/v2/categorys")
+@RequestMapping("/v2/categorys/CategoryJPA")
 public class CategoryControllerJPA {
          @Autowired
          private ICategoryRepository repository;

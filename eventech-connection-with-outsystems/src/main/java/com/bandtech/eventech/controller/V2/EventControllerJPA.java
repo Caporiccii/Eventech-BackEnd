@@ -16,7 +16,7 @@ import java.util.Optional;
 import static org.springframework.http.ResponseEntity.*;
 
 @RestController
-@RequestMapping("/v2/events")
+@RequestMapping("/v2/events/EventJPA")
 public class EventControllerJPA {
     @Autowired
     private IEventJPA repository;
