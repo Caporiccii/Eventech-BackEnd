@@ -1,7 +1,6 @@
-package com.bandtech.eventech.Interfaces;
+package com.bandtech.eventech.interfaces;
 
 import com.bandtech.eventech.model.V1.Address;
-import com.bandtech.eventech.model.V1.Category;
 
 public interface IAdressOut {
     Address getForEntity(Long addressId);

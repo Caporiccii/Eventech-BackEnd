@@ -1,6 +1,6 @@
 package com.bandtech.eventech.Service.V1;
 
-import com.bandtech.eventech.Interfaces.IAdressOut;
+import com.bandtech.eventech.interfaces.IAdressOut;
 import com.bandtech.eventech.model.V1.Address;
 import com.bandtech.eventech.model.V1.EndPoints;
 import org.json.JSONObject;

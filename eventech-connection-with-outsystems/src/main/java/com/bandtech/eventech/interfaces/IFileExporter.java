@@ -1,4 +1,4 @@
-package com.bandtech.eventech.Interfaces;
+package com.bandtech.eventech.interfaces;
 
 import com.bandtech.eventech.model.V2.EventJPA;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
