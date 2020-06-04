@@ -25,16 +25,15 @@ public class TicketControllerJPA {
 
         return status(201).build();
     }
-    @GetMapping
-    public ResponseEntity get(){
-        List <TicketJPA> ticket = repository.findAll();
-
-        if (ticket == null)
-        {
-            return  noContent().build();
-        }
-        else{
-            return ok(ticket);
+    @GetMapping("/{ticketId}")
+    public ResponseEntity get(@PathVariable int ticketId){
+        Optional<TicketJPA> ticket = repository.findById(ticketId);
+            if (ticket.isPresent())
+            {
+                return  badRequest().build();
+            }
+            else{
+                return ok(ticket);
         }
     }
 

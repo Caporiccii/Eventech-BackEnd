@@ -25,19 +25,18 @@ public class AddressControllerJPA {
         return status(201).build();
     }
 
-    @GetMapping
-    public ResponseEntity get(){
-        List<AddressJPA> address = repository.findAll();
+        @GetMapping("/{addressId}")
+        public ResponseEntity get(@PathVariable int addressId ) {
+            Optional<AddressJPA> address = repository.findById(addressId);
 
-        if (address == null)
-        {
-            return  noContent().build();
-        }
-        else{
-            return ok(address);
-        }
-    }
 
+            if (!address.isPresent()) {
+                return badRequest().build();
+            } else {
+                return ok(address);
+            }
+
+        }
     @DeleteMapping("/{addressId}")
     public ResponseEntity delete(@PathVariable int addressId){
         if (this.repository.existsById(addressId)) {

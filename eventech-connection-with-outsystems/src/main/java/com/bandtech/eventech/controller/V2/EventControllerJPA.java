@@ -23,23 +23,23 @@ public class EventControllerJPA {
     @Autowired
     private  FileService fileService;
     List<EventJPA> event;
-
+    Optional<EventJPA> eventGet;
     @PostMapping
     public ResponseEntity create(@RequestBody EventJPA event){
       repository.save(event);
 
         return status(201).build();
     }
-    @GetMapping
-    public ResponseEntity get(){
-         event = repository.findAll();
+    @GetMapping("/{eventId}")
+    public ResponseEntity get(@PathVariable int eventId){
+        eventGet = repository.findById(eventId);
 
-        if (event == null)
-        {
-            return  noContent().build();
-        }
-        else{
-            return ok(event);
+            if (!eventGet.isPresent())
+            {
+                return  badRequest().build();
+            }
+            else{
+                return ok(event);
         }
     }
 

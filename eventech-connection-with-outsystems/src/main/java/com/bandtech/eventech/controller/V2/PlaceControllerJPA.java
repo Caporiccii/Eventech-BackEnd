@@ -24,16 +24,18 @@ public class PlaceControllerJPA {
 
         return status(201).build();
     }
-    @GetMapping
-    public ResponseEntity get(){
-        List<PlaceJPA> place = repository.findAll();
+    @GetMapping("/{placeId}")
+    public ResponseEntity get(@PathVariable int placeId){
+        Optional<PlaceJPA> place = repository.findById(placeId);
 
-        if (place == null)
-        {
-            return  noContent().build();
-        }
-        else{
-            return ok(place);
+
+            if (!place.isPresent())
+            {
+
+                return  badRequest().build();
+            }
+            else{
+                return ok(place);
         }
     }
 

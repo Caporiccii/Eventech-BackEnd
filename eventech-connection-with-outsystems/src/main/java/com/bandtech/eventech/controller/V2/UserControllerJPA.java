@@ -25,15 +25,15 @@ public class UserControllerJPA {
         return status(201).build();
     }
 
-    @GetMapping
-    public ResponseEntity get() {
-        List<UserJPA> user = repository.findAll();
+    @GetMapping("/{userId}")
+    public ResponseEntity get(@PathVariable int userId) {
+        Optional<UserJPA> user = repository.findById(userId);
 
-        if (user.isEmpty()) {
-            return noContent().build();
-        } else {
-            return ok(user);
-        }
+            if (!user.isPresent()) {
+                return badRequest().build();
+            } else {
+                return ok(user);
+            }
     }
 
     @DeleteMapping("/{userId}")

@@ -23,19 +23,18 @@ public class CategoryControllerJPA {
         return status(201).build();
     }
 
-    @GetMapping
-    public ResponseEntity get(){
-       List<CategoryJPA> categories = repository.findAll();
+    @GetMapping("/{categoryId}")
+    public ResponseEntity get(@PathVariable int categoryId){
+        Optional<CategoryJPA> categories = repository.findById(categoryId);
 
-        if (categories == null)
-        {
-            return  noContent().build();
-        }
-        else{
-            return ok(categories);
-        }
+            if (!categories.isPresent())
+            {
+                return  badRequest().build();
+            }
+            else {
+                return ok(categories);
+            }
     }
-
     @DeleteMapping("/{categoryId}")
     public ResponseEntity delete(@PathVariable int categoryId){
         if (this.repository.existsById(categoryId)) {

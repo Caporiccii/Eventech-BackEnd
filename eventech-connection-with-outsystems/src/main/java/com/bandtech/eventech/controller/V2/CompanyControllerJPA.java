@@ -12,7 +12,7 @@ import java.util.Optional;
 import static org.springframework.http.ResponseEntity.*;
 
 @RestController
-@RequestMapping("/v2/companys/CompanyJPA ")
+@RequestMapping("/v2/companys/CompanyJPA")
 public class CompanyControllerJPA {
 
     @Autowired
@@ -24,17 +24,19 @@ public class CompanyControllerJPA {
 
         return status(201).build();
     }
-    @GetMapping
-    public ResponseEntity get(){
-        List<CompanyJPA> company = repository.findAll();
+    @GetMapping("/{companyId}")
+    public ResponseEntity get(@PathVariable int companyId){
+        Optional<CompanyJPA> company = repository.findById(companyId);
 
-        if (company == null)
-        {
-            return  noContent().build();
-        }
-        else{
-            return ok(company);
-        }
+
+            if (!company.isPresent())
+            {
+                return  badRequest().build();
+            }
+            else{
+                return ok(company);
+
+            }
     }
 
     @DeleteMapping("/{companyId}")
