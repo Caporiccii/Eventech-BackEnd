@@ -29,7 +29,7 @@ public class UserControllerJPA {
     public ResponseEntity get() {
         List<UserJPA> user = repository.findAll();
 
-        if (user == null) {
+        if (user.isEmpty()) {
             return noContent().build();
         } else {
             return ok(user);
