@@ -1,4 +1,4 @@
-package com.bandtech.eventech.model.V2;
+package com.bandtech.eventech.controller.V2;
 
 import com.bandtech.eventech.Service.ServiceEmailSend;
 import org.springframework.beans.factory.annotation.Autowired;
