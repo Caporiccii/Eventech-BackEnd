@@ -39,7 +39,7 @@ public class EventControllerJPA {
                 return  badRequest().build();
             }
             else{
-                return ok(event);
+                return ok(eventGet);
         }
     }
 

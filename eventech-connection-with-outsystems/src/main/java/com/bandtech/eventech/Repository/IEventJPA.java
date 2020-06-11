@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Map;
 
 public interface IEventJPA extends JpaRepository<EventJPA,Integer> {
-    Object findByQuery(String s, Map<String, Object> map);
+   // Object findByQuery(String s, Map<String, Object> map);
 }
