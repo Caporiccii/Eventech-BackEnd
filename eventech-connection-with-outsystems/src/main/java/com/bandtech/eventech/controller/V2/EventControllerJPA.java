@@ -80,9 +80,18 @@ public class EventControllerJPA {
         }
     }
     @GetMapping("/file")
-    public ResponseEntity getFile() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
-
+    public ResponseEntity getFile() throws CsvRequiredFieldEmptyException,
+            IOException, CsvDataTypeMismatchException {
       fileService.gravaArquivo(event);
         return ok().build();
+    }
+
+    @GetMapping("/dash")
+    public ResponseEntity getCoutEvents(){
+        Integer count = repository.getCountEvent();
+
+        if (count != null)
+            return ok(count);
+        else return noContent().build();
     }
 }

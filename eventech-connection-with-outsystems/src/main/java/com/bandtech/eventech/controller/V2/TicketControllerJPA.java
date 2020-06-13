@@ -72,4 +72,24 @@ public class TicketControllerJPA {
             return notFound().build();
         }
     }
+
+    @GetMapping("/dash")
+    public ResponseEntity getCoutTicket(){
+        Integer count = repository.getCountTicket();
+
+        if (count != null)
+            return ok(count);
+        else
+            return noContent().build();
+    }
+
+    @GetMapping("/total-sale")
+    public ResponseEntity getSumTicket(){
+        Double sum = repository.getTotalSaleTicket();
+
+        if (sum != null)
+            return ok(sum);
+        else
+            return noContent().build();
+    }
 }

@@ -13,4 +13,7 @@ public interface IEventJPA extends JpaRepository<EventJPA,Integer> {
    // arrumar para trazer nome do evento
    @Query("select name from EventJPA")
    String getNameEvent();
+
+   @Query("select count (id) from EventJPA")
+   Integer getCountEvent();
 }
