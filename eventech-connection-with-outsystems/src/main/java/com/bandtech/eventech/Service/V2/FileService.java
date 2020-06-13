@@ -1,7 +1,7 @@
 package com.bandtech.eventech.Service.V2;
 
 import com.bandtech.eventech.interfaces.IFileExporter;
-import com.bandtech.eventech.Repository.IEventJPA;
+import com.bandtech.eventech.Repository.IEventRepository;
 import com.bandtech.eventech.model.V2.EventJPA;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
@@ -18,7 +18,7 @@ import java.util.*;
 @Service
 public class FileService implements IFileExporter {
     @Autowired
-    private IEventJPA repository;
+    private IEventRepository repository;
      private final String NAME_ARCHIVE = "eventos.csv";
 
 

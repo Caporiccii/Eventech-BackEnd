@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Map;
 
-public interface IEventJPA extends JpaRepository<EventJPA,Integer> {
+public interface IEventRepository extends JpaRepository<EventJPA,Integer> {
    // arrumar para trazer nome do evento
    @Query("select name from EventJPA")
    String getNameEvent();

@@ -2,17 +2,13 @@ package com.bandtech.eventech.Service;
 
 import com.bandtech.eventech.Repository.IAdressRepository;
 import com.bandtech.eventech.Repository.ICategoryRepository;
-import com.bandtech.eventech.Repository.IEventJPA;
+import com.bandtech.eventech.Repository.IEventRepository;
 import com.bandtech.eventech.Repository.ITicketRepository;
 import com.bandtech.eventech.Service.V2.DateFormatService;
-import com.bandtech.eventech.model.V2.EventJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Component
 public class ServiceEmailSend {
@@ -20,7 +16,7 @@ public class ServiceEmailSend {
     private JavaMailSender mailSender;
 
     @Autowired
-    private IEventJPA eventJPA;
+    private IEventRepository eventJPA;
     @Autowired
     private ICategoryRepository categoryRepository;
     @Autowired

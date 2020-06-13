@@ -2,7 +2,7 @@ package com.bandtech.eventech.controller.V2;
 
 import com.bandtech.eventech.Service.V2.FileService;
 import com.bandtech.eventech.model.V2.EventJPA;
-import com.bandtech.eventech.Repository.IEventJPA;
+import com.bandtech.eventech.Repository.IEventRepository;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import static org.springframework.http.ResponseEntity.*;
 @RequestMapping("/v2/events/EventJPA")
 public class EventControllerJPA {
     @Autowired
-    private IEventJPA repository;
+    private IEventRepository repository;
     @Autowired
     private  FileService fileService;
     List<EventJPA> event;

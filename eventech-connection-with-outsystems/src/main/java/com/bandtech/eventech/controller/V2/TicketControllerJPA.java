@@ -22,13 +22,12 @@ public class TicketControllerJPA {
     @PostMapping
     public ResponseEntity create(@RequestBody TicketJPA ticket){
         repository.save(ticket);
-
         return status(201).build();
     }
     @GetMapping("/{ticketId}")
     public ResponseEntity get(@PathVariable int ticketId){
         Optional<TicketJPA> ticket = repository.findById(ticketId);
-            if (ticket.isPresent())
+            if (!ticket.isPresent())
             {
                 return  badRequest().build();
             }
