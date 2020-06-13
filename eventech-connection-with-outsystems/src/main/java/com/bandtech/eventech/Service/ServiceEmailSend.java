@@ -4,6 +4,7 @@ import com.bandtech.eventech.Repository.IAdressRepository;
 import com.bandtech.eventech.Repository.ICategoryRepository;
 import com.bandtech.eventech.Repository.IEventJPA;
 import com.bandtech.eventech.Repository.ITicketRepository;
+import com.bandtech.eventech.Service.V2.DateFormatService;
 import com.bandtech.eventech.model.V2.EventJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -26,18 +27,17 @@ public class ServiceEmailSend {
     private IAdressRepository adressRepository;
     @Autowired
     private ITicketRepository ticketRepository;
+    private DateFormatService formatService = new DateFormatService();
     private String name;
     private String category;
+    private String formattedDate;
     private SimpleMailMessage email;
     private String street;
     private Integer streetNumber;
     private Double price;
 
     public void sendEmail(){
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter dateHour = DateTimeFormatter
-        .ofPattern("dd-MM-yyyy HH:mm:ss");
-        String formattedDate = now.format(dateHour);
+       formattedDate = formatService.formatDate();
         streetNumber = adressRepository.getStreetNumber();
         street = adressRepository.getStreet();
         name = eventJPA.getNameEvent();

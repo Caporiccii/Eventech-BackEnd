@@ -1,12 +1,15 @@
 package com.bandtech.eventech.controller.V2;
 
 
+import com.bandtech.eventech.Service.V2.DateFormatService;
 import com.bandtech.eventech.model.V2.UserJPA;
 import com.bandtech.eventech.Repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,11 +20,15 @@ import static org.springframework.http.ResponseEntity.*;
 public class UserControllerJPA {
     @Autowired
     private IUserRepository repository;
+    private DateFormatService formatService;
 
     @PostMapping
     public ResponseEntity create(@RequestBody UserJPA user) {
+        String formattedDate;
+        formatService = new DateFormatService();
+        formattedDate = formatService.formatDate();
+        user.setCreationDate(formattedDate);
         repository.save(user);
-
         return status(201).build();
     }
 

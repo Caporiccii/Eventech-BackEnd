@@ -1,5 +1,6 @@
 package com.bandtech.eventech.controller.V2;
 
+import com.bandtech.eventech.Service.V2.DateFormatService;
 import com.bandtech.eventech.model.V2.CompanyJPA;
 import com.bandtech.eventech.Repository.ICompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,17 @@ import static org.springframework.http.ResponseEntity.*;
 @RestController
 @RequestMapping("/v2/companys/CompanyJPA")
 public class CompanyControllerJPA {
-
     @Autowired
     private ICompanyRepository repository;
+    private DateFormatService formatService;
 
     @PostMapping
     public ResponseEntity create(@RequestBody CompanyJPA company){
+        String formattedDate;
+        formatService = new DateFormatService();
+        formattedDate = formatService.formatDate();
+        company.setCreationDate(formattedDate);
         repository.save(company);
-
         return status(201).build();
     }
     @GetMapping("/{companyId}")

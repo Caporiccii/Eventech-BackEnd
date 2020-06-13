@@ -25,7 +25,7 @@ public class CompanyJPA {
     private String about;
     private String cnpj;
     private String phone;
-    private LocalDate creationDate;
+    private String creationDate;
     private boolean isActive;
     private String socialReason;
     private String fantasyName;
