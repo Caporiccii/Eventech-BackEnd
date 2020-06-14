@@ -3,13 +3,16 @@ package com.bandtech.eventech.Service.V2;
 import com.bandtech.eventech.Repository.ICategoryRepository;
 import com.bandtech.eventech.Repository.ICompanyRepository;
 import com.bandtech.eventech.Repository.IEventRepository;
+import com.bandtech.eventech.Repository.ITicketRepository;
 import com.bandtech.eventech.crosscutting.PilhaObj;
 import com.bandtech.eventech.interfaces.ICategoryOut;
+import com.bandtech.eventech.model.V2.History;
 import com.bandtech.eventech.model.V2.TicketJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,33 +25,46 @@ public class HistoryService {
     private ICompanyRepository companyRepository;
     @Autowired
     private ICategoryRepository categoryRepository;
-
-    private PilhaObj<String> history;
+    @Autowired
+    private ITicketRepository ticketRepository;
+    private History history = new History();
+    private PilhaObj<History> historyStack;
+    private List<History> historyList;
     private Integer totalEvent;
 
-    public String addHistory(){
-        String nameEvent = getNameHistoryEvent();
+    public History addHistory(){
+        int count = ticketRepository.getCountTicket();
+         String nameEvent = getNameHistoryEvent();
+         String nameCompany = getNameHistoryCompany();
+         String nameCategory = getNameHistoryCategory();
+try {
 
-
-        //for (String a : nameEvent)
-        return null;
+    for (int i = 0; i < count; i++)
+        historyStack.push(history = new
+                History(nameEvent, nameCompany, nameCategory));
+}catch (Exception ex){
+    System.out.println(ex + "Erro ao gerar Historico");
+}
+    return history;
     }
 
     public String getNameHistoryEvent(){
-     String name = repository.getNameEvent();
-     history.push(name);
-     return history.peek();
+        String nameEventQuery = repository.getNameEvent();
+        history.setNameEvent(nameEventQuery);
+        return nameEventQuery;
   }
 
     public String getNameHistoryCompany(){
-        String nameCompany = companyRepository.getNameCompany();
-        history.push(nameCompany);
-        return history.peek();
+        String nameCompanyQuery = companyRepository.getNameCompany();
+        history.setNameCompany(nameCompanyQuery);
+
+        return nameCompanyQuery;
     }
 
     public String getNameHistoryCategory(){
-        String nameCategory = categoryRepository.getCategoryEvent();
-        history.push(nameCategory);
-        return history.peek();
+        String nameCategoryQuery = categoryRepository.getCategoryEvent();
+        history.setNameCompany(nameCategoryQuery);
+
+        return nameCategoryQuery;
     }
 }
