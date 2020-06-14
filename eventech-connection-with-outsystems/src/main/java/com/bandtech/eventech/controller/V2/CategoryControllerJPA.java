@@ -55,7 +55,7 @@ public class CategoryControllerJPA {
             CategoryJPA categoryEncontrado = consultaExistente.get();
 
             categoryEncontrado.setDescription(category.getDescription());
-            categoryEncontrado.setName(category.getName());
+            categoryEncontrado.setCategoryName(category.getCategoryName());
 
             this.repository.save(categoryEncontrado);
             return ResponseEntity.ok().build();

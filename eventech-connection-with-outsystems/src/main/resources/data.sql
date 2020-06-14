@@ -1,4 +1,4 @@
-INSERT INTO CATEGORYJPA (ID,DESCRIPTION,NAME) VALUES (1,'Melhor Linguagem do Mundo','Java'),
+INSERT INTO CATEGORYJPA (ID,DESCRIPTION,CATEGORY_NAME) VALUES (1,'Melhor Linguagem do Mundo','Java'),
                                                       (2,'Não Ensine essa','PHP');
 
 INSERT INTO ADDRESSJPA (ID,CITY,STATE,ZIP_CODE,STREET,STREET_NUMBER) VALUES
