@@ -19,7 +19,8 @@ import java.util.*;
 public class FileService implements IFileExporter {
     @Autowired
     private IEventRepository repository;
-     private final String NAME_ARCHIVE = "eventos.csv";
+
+    private final String NAME_ARCHIVE = "eventos.csv";
 
 
     @Override
@@ -27,9 +28,7 @@ public class FileService implements IFileExporter {
         EventJPA eventJPA = new EventJPA();
 
       lista = repository.findAll();
-   lista.add(eventJPA);
-
-
+      lista.add(eventJPA);
 
         Writer writer = Files.newBufferedWriter(Paths.get(NAME_ARCHIVE));
 

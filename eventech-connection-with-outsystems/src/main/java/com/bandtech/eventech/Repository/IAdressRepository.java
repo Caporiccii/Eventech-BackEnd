@@ -5,10 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface IAdressRepository extends JpaRepository <AddressJPA,Integer> {
-    @Query("SELECT street FROM AddressJPA")
+    @Query("SELECT street FROM AddressJPA where id = id")
     String getStreet();
 
-    @Query("SELECT streetNumber FROM AddressJPA")
+    @Query("SELECT streetNumber FROM AddressJPA where id = id")
     Integer getStreetNumber();
 
 }

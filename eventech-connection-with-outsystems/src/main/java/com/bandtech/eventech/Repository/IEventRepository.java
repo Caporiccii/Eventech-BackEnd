@@ -11,7 +11,7 @@ import java.util.Map;
 
 public interface IEventRepository extends JpaRepository<EventJPA,Integer> {
    // arrumar para trazer nome do evento
-   @Query("select name from EventJPA")
+   @Query("select name from EventJPA where id = id")
    String getNameEvent();
 
    @Query("select count (id) from EventJPA")

@@ -33,11 +33,11 @@ public class HistoryService {
     private Integer totalEvent;
 
     public History addHistory(){
-        int count = ticketRepository.getCountTicket();
+        try {
+            int count = ticketRepository.getCountTicket();
          String nameEvent = getNameHistoryEvent();
          String nameCompany = getNameHistoryCompany();
          String nameCategory = getNameHistoryCategory();
-try {
 
     for (int i = 0; i < count; i++)
         historyStack.push(history = new
