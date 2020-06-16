@@ -35,10 +35,10 @@ public class LoginControllerJPA {
        }
    }
 
-    @GetMapping ("/empresa/{empresa}/{senha}")
-    public ResponseEntity logEmpresa(@PathVariable String empresa, @PathVariable String senha){
+    @GetMapping ("/empresa/{nome}/{senha}")
+    public ResponseEntity logEmpresa(@PathVariable("nome") String nome, @PathVariable("senha") String senha){
 
-        response = loginService.logEmp(empresa,senha);
+        response = loginService.logEmp(nome,senha);
 
          if (!response)
         {

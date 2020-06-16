@@ -60,10 +60,10 @@ public class LoginService  {
   return result;
 
     }
-    public Boolean logEmp(@PathParam("empresa") String empresa,
+    public Boolean logEmp(@PathParam("nome") String nome,
                           @PathParam("senha") String senha) {
 
-        empresas = companyRepository.getCompanyandPassword(empresa,senha);
+        empresas = companyRepository.getCompanyandPassword(nome,senha);
         company = new CompanyJPA();
         empresas.add(company);
 
@@ -71,7 +71,7 @@ public class LoginService  {
         for (CompanyJPA company : empresas) {
             loginCompany = company.getName();
             senhaCompany = company.getPassword();
-            if (!empresa.equals(loginUser) && !senha.equals(senhaUser)) {
+            if (!nome.equals(loginCompany) && !senha.equals(senhaCompany)) {
                 System.out.println("Login inválido");
                 return  result =false;
             } else {
