@@ -35,6 +35,8 @@ public class LoginService  {
     List<CompanyJPA> empresas;
     String loginUser;
     String senhaUser;
+    String loginCompany;
+    String senhaCompany;
     private UserJPA user;
     private CompanyJPA company;
     private boolean result;
@@ -65,10 +67,10 @@ public class LoginService  {
         company = new CompanyJPA();
         empresas.add(company);
 
-        //empresas.forEach(emp -> !emp.getName().equals("") &&  !emp.getPassword().equals("") );
+
         for (CompanyJPA company : empresas) {
-            loginUser = user.getName();
-            senhaUser = user.getPassword();
+            loginCompany = company.getName();
+            senhaCompany = company.getPassword();
             if (!empresa.equals(loginUser) && !senha.equals(senhaUser)) {
                 System.out.println("Login inválido");
                 return  result =false;
