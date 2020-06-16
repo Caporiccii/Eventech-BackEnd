@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter @Setter
 @ToString
@@ -27,7 +29,7 @@ public class UserJPA {
     private LocalDate dateBorn ;
     private String cpf ;
     private String phone ;
-    private LocalDate creationDate;
+    private String creationDate;
     private int companyId;
     private boolean isActive;
 
@@ -35,6 +37,7 @@ public class UserJPA {
         this.name = name;
         this.password = password;
     }
+
 
     public boolean isActive() {
         return isActive;

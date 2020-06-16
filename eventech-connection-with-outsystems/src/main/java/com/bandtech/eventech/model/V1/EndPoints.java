@@ -11,6 +11,8 @@ public class EndPoints {
 
     public final String eventPostEndpoint = "https://eventech.outsystemscloud.com/Core/rest/Event/v1";
     public final String eventEndpoint = "https://eventech.outsystemscloud.com/Core/rest/Event/v1/{EventId}";
+    public final String eventEndpointV2 = "https://eventech.outsystemscloud.com/Core/rest/Event/v2/{EventId}";
+    public final String eventEndpointV2List = "https://eventech.outsystemscloud.com/Core/rest/Event/v2/events";
 
     public final String companyEndpoint = "https://eventech.outsystemscloud.com/Core/rest/Company/v1/{CompanyId}";
     public final String companyPostEndpoint = "https://eventech.outsystemscloud.com/Core/rest/Company/v1";

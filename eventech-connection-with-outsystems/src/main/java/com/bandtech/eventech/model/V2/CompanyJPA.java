@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
 
 
 @Getter
@@ -25,13 +24,13 @@ public class CompanyJPA {
     private String about;
     private String cnpj;
     private String phone;
-    private LocalDate creationDate;
+    private String creationDate;
     private boolean isActive;
     private String socialReason;
     private String fantasyName;
 
-    public CompanyJPA(String name, String password) {
-        this.name = name;
+    public CompanyJPA(String nameCompany, String password) {
+        this.name = nameCompany;
         this.password = password;
     }
 

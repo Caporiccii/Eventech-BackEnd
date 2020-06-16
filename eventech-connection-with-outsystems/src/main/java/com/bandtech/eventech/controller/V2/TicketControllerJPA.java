@@ -13,7 +13,7 @@ import static org.springframework.http.ResponseEntity.*;
 
 
 @RestController
-@RequestMapping("/v2/tickets")
+@RequestMapping("/v2/tickets/TicketJPA")
 public class TicketControllerJPA {
 
     @Autowired
@@ -22,19 +22,17 @@ public class TicketControllerJPA {
     @PostMapping
     public ResponseEntity create(@RequestBody TicketJPA ticket){
         repository.save(ticket);
-
         return status(201).build();
     }
-    @GetMapping
-    public ResponseEntity get(){
-        List <TicketJPA> ticket = repository.findAll();
-
-        if (ticket == null)
-        {
-            return  noContent().build();
-        }
-        else{
-            return ok(ticket);
+    @GetMapping("/{ticketId}")
+    public ResponseEntity get(@PathVariable int ticketId){
+        Optional<TicketJPA> ticket = repository.findById(ticketId);
+            if (!ticket.isPresent())
+            {
+                return  badRequest().build();
+            }
+            else{
+                return ok(ticket);
         }
     }
 
@@ -72,5 +70,25 @@ public class TicketControllerJPA {
         else{
             return notFound().build();
         }
+    }
+
+    @GetMapping("/dash")
+    public ResponseEntity getCoutTicket(){
+        Integer count = repository.getCountTicket();
+
+        if (count != null)
+            return ok(count);
+        else
+            return noContent().build();
+    }
+
+    @GetMapping("/total-sale")
+    public ResponseEntity getSumTicket(){
+        Double sum = repository.getTotalSaleTicket();
+
+        if (sum != null)
+            return ok(sum);
+        else
+            return noContent().build();
     }
 }

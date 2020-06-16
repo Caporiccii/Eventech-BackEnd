@@ -18,7 +18,7 @@ public class CategoryJPA {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String Name;
+    private String categoryName;
     private String Description;
 
 

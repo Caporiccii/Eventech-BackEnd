@@ -7,6 +7,9 @@ import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EventService implements IEventOut {
     RestTemplate template = new RestTemplate();
     EndPoints endPoints = new EndPoints();
@@ -31,6 +34,23 @@ public class EventService implements IEventOut {
     }
 
     @Override
+    public Event getForEntityV2(Long eventId) {
+
+
+        return null;
+    }
+
+    @Override
+    public List<String> getEventList() {
+        List<String> list = new ArrayList<>();
+        response = template.getForEntity(endPoints.eventEndpointV2List, String.class);
+
+        list.add(response.toString());
+
+        return list;
+    }
+
+    @Override
     public void postForEntity(Event event) {
         template.postForEntity(endPoints.eventPostEndpoint,event,String.class);
     }
@@ -43,7 +63,7 @@ public class EventService implements IEventOut {
 
     @Override
     public void putForEntity(Long eventId, Event event) {
-
+          template.put(endPoints.eventEndpoint, event, eventId);
     }
 
 

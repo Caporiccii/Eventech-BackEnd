@@ -2,7 +2,7 @@ package com.bandtech.eventech.controller.V2;
 
 import com.bandtech.eventech.Service.V2.FileService;
 import com.bandtech.eventech.model.V2.EventJPA;
-import com.bandtech.eventech.Repository.IEventJPA;
+import com.bandtech.eventech.Repository.IEventRepository;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,30 +16,30 @@ import java.util.Optional;
 import static org.springframework.http.ResponseEntity.*;
 
 @RestController
-@RequestMapping("/v2/events")
+@RequestMapping("/v2/events/EventJPA")
 public class EventControllerJPA {
     @Autowired
-    private IEventJPA repository;
+    private IEventRepository repository;
     @Autowired
     private  FileService fileService;
     List<EventJPA> event;
-
+    Optional<EventJPA> eventGet;
     @PostMapping
     public ResponseEntity create(@RequestBody EventJPA event){
       repository.save(event);
 
         return status(201).build();
     }
-    @GetMapping
-    public ResponseEntity get(){
-         event = repository.findAll();
+    @GetMapping("/{eventId}")
+    public ResponseEntity get(@PathVariable int eventId){
+        eventGet = repository.findById(eventId);
 
-        if (event == null)
-        {
-            return  noContent().build();
-        }
-        else{
-            return ok(event);
+            if (!eventGet.isPresent())
+            {
+                return  badRequest().build();
+            }
+            else{
+                return ok(eventGet);
         }
     }
 
@@ -80,9 +80,18 @@ public class EventControllerJPA {
         }
     }
     @GetMapping("/file")
-    public ResponseEntity getFile() throws CsvRequiredFieldEmptyException, IOException, CsvDataTypeMismatchException {
-
+    public ResponseEntity getFile() throws CsvRequiredFieldEmptyException,
+            IOException, CsvDataTypeMismatchException {
       fileService.gravaArquivo(event);
         return ok().build();
+    }
+
+    @GetMapping("/dash")
+    public ResponseEntity getCoutEvents(){
+        Integer count = repository.getCountEvent();
+
+        if (count != null)
+            return ok(count);
+        else return noContent().build();
     }
 }

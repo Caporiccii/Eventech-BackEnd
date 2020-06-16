@@ -5,6 +5,8 @@ import com.bandtech.eventech.model.V1.Event;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static org.springframework.http.ResponseEntity.*;
 
 @RestController
@@ -26,6 +28,13 @@ public class EventController {
         eventService.postForEntity(event);
 
         return status(201).build();
+    }
+    @GetMapping("/list")
+    public ResponseEntity getList(){
+
+        List<String> response = eventService.getEventList();
+
+        return ok(response);
     }
 
 }

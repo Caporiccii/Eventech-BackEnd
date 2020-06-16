@@ -21,6 +21,8 @@ public class EventJPA {
     public String name;
     public String initialDate;
     public String finalDate;
+    public String initialHour;
+    public String finalHour;
     public int categoryId;
     public int placeId;
     public int createdBy;
