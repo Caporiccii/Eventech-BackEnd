@@ -13,7 +13,7 @@ public interface ICompanyRepository extends JpaRepository<CompanyJPA,Integer> {
     @Query("select a from CompanyJPA a where a.name in :nome and a.password in :senha")
     List<CompanyJPA> getCompanyandPassword(@Param("nome") String nome,
                                             @Param("senha") String senha);
-    @Query("SELECT name FROM CompanyJPA")
+    @Query("SELECT name FROM CompanyJPA where id = 1")
     String getNameCompany();
 
 }

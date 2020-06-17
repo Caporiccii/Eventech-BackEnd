@@ -14,5 +14,5 @@ public interface IFileExporter {
 
     void gravaRegistro(String nomeArq, String header);
 
-    void montaArquivo(String nomeArquivo, String header, String Corpo, String trailer, int contaRegistroDados,List<EventJPA> lista);
+    void montaArquivo();
 }

@@ -1,8 +1,12 @@
 package com.bandtech.eventech.Service.V2;
 
+import com.bandtech.eventech.Repository.IAdressRepository;
+import com.bandtech.eventech.Repository.ICategoryRepository;
+import com.bandtech.eventech.Repository.ICompanyRepository;
 import com.bandtech.eventech.interfaces.IFileExporter;
 import com.bandtech.eventech.Repository.IEventRepository;
 import com.bandtech.eventech.model.V1.Event;
+import com.bandtech.eventech.model.V2.CompanyJPA;
 import com.bandtech.eventech.model.V2.EventJPA;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
@@ -24,8 +28,14 @@ public class FileService implements IFileExporter {
     private IEventRepository repository;
     @Autowired
     private DateFormatService formatService;
+    @Autowired
+    private ICompanyRepository companyRepository;
+    @Autowired
+    private  ICategoryRepository categoryRepository;
+    @Autowired
+    private IAdressRepository adressRepository;
 
-    private final String NAME_ARCHIVE = "eventos.csv";
+    private final String NAME_ARCHIVE = "eventos.txt";
     private BufferedWriter writer;
     private EventJPA eventJPA;
     private Integer idEvent;
@@ -33,6 +43,17 @@ public class FileService implements IFileExporter {
     private String descriptionEvent;
     private boolean isCancelled;
     private String ageRange;
+    private String company;
+    private String place;
+    private String categoria;
+    private String header;
+    private String corpo;
+    private String trailer;
+    private int contaRegistroDados;
+    private List<EventJPA> lista;
+    private String initialDate;
+    private String finalDate;
+
 
 // metodo para montar o objeto JPA
 
@@ -69,6 +90,7 @@ public class FileService implements IFileExporter {
 
     @Override
     public void gravaRegistro(String nomeArquivo, String header) {
+        nomeArquivo = NAME_ARCHIVE;
         try {
 
             writer = new BufferedWriter(new FileWriter(nomeArquivo, true));
@@ -86,39 +108,46 @@ public class FileService implements IFileExporter {
     }
 
     @Override
-    public void montaArquivo(String nomeArquivo, String header, String corpo, String trailer, int contaRegistroDados,
-                             List<EventJPA> lista) {
-
+    public void montaArquivo() {
+        //nomeArquivo = NAME_ARCHIVE;
         idEvent = repository.getIdEvent();
         nameEvent = repository.getNameEvent();
         descriptionEvent = repository.getDescriptionEvent();
         isCancelled = repository.getIsCancelledEvent();
         ageRange = repository.getAgeRangeEvent();
+        company = companyRepository.getNameCompany();
+        place = adressRepository.getStreet();
+        categoria = categoryRepository.getCategoryEvent();
+        initialDate = repository.getInitialDate();
+        finalDate = repository.getFinalDate();
 
-        nomeArquivo = NAME_ARCHIVE;
 
-        header += "Dados dos Eventos";
+
+        header += " Dados dos Eventos ";
         header += formatService.formatDate();
-        header += "01";
+        header += " 01";
 
-        gravaRegistro(nomeArquivo,header);
+        gravaRegistro(NAME_ARCHIVE,header);
+//corpo += String.format("ID,  Nome Evento, Inicio,     Término,    Categoria,  Lugar,      Empresa,    Descrição,  Cancelado, Idade");
 
-        corpo = "02";
-        corpo += idEvent;
-        corpo += nameEvent;
-        corpo += "";
-        corpo += "";
-        corpo += "";
-        corpo += descriptionEvent;
-        corpo += isCancelled;
-        corpo += ageRange;
+        corpo = "02  ";
+        corpo += String.format("%03d",idEvent);
+        corpo += String.format( "  %-10s " ,nameEvent);
+        corpo += String.format( "  %-10s " ,initialDate);
+        corpo += String.format( "  %-10s " ,finalDate);
+        corpo += String.format(" %-10s ", categoria);
+        corpo += String.format(" %-10s ",place);
+        corpo += String.format(" %-10s ",company);
+        corpo += String.format(" %-10s ",descriptionEvent);
+        corpo += String.format(" %-3s ",isCancelled);
+        corpo += String.format(" %-2s ",ageRange);
 
         contaRegistroDados++;
-        gravaRegistro(nomeArquivo,corpo);
+        gravaRegistro(NAME_ARCHIVE,corpo);
 
-        trailer += "01";
-        trailer += String.format("%010d", contaRegistroDados);
-        gravaRegistro(nomeArquivo,trailer);
+        trailer += " 01 ";
+        trailer += String.format(" %010d ", contaRegistroDados);
+        gravaRegistro(NAME_ARCHIVE,trailer);
 
     }
 

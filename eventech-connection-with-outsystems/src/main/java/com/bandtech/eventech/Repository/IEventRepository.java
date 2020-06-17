@@ -29,4 +29,9 @@ public interface IEventRepository extends JpaRepository<EventJPA,Integer> {
    @Query("SELECT ageRange from EventJPA where id = 1 ")
    String getAgeRangeEvent();
 
+   @Query("SELECT initialDate from EventJPA where id = 1")
+   String getInitialDate();
+
+   @Query("SELECT finalDate from EventJPA where id = 1")
+   String getFinalDate();
 }
