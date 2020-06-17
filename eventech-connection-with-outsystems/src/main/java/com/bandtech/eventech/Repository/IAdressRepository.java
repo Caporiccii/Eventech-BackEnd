@@ -8,7 +8,7 @@ public interface IAdressRepository extends JpaRepository <AddressJPA,Integer> {
     @Query("SELECT street FROM AddressJPA where id = 1")
     String getStreet();
 
-    @Query("SELECT streetNumber FROM AddressJPA where id = id")
+    @Query("SELECT streetNumber FROM AddressJPA where id = 1")
     Integer getStreetNumber();
 
 }
