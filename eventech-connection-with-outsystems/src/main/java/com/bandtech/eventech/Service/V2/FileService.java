@@ -28,6 +28,11 @@ public class FileService implements IFileExporter {
     private final String NAME_ARCHIVE = "eventos.csv";
     private BufferedWriter writer;
     private EventJPA eventJPA;
+    private Integer idEvent;
+    private String nameEvent;
+    private String descriptionEvent;
+    private boolean isCancelled;
+    private String ageRange;
 
 // metodo para montar o objeto JPA
 
@@ -83,6 +88,13 @@ public class FileService implements IFileExporter {
     @Override
     public void montaArquivo(String nomeArquivo, String header, String corpo, String trailer, int contaRegistroDados,
                              List<EventJPA> lista) {
+
+        idEvent = repository.getIdEvent();
+        nameEvent = repository.getNameEvent();
+        descriptionEvent = repository.getDescriptionEvent();
+        isCancelled = repository.getIsCancelledEvent();
+        ageRange = repository.getAgeRangeEvent();
+
         nomeArquivo = NAME_ARCHIVE;
 
         header += "Dados dos Eventos";
@@ -92,7 +104,21 @@ public class FileService implements IFileExporter {
         gravaRegistro(nomeArquivo,header);
 
         corpo = "02";
+        corpo += idEvent;
+        corpo += nameEvent;
         corpo += "";
+        corpo += "";
+        corpo += "";
+        corpo += descriptionEvent;
+        corpo += isCancelled;
+        corpo += ageRange;
+
+        contaRegistroDados++;
+        gravaRegistro(nomeArquivo,corpo);
+
+        trailer += "01";
+        trailer += String.format("%010d", contaRegistroDados);
+        gravaRegistro(nomeArquivo,trailer);
 
     }
 

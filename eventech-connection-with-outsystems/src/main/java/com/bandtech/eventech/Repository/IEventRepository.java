@@ -16,4 +16,17 @@ public interface IEventRepository extends JpaRepository<EventJPA,Integer> {
 
    @Query("select count (id) from EventJPA")
    Integer getCountEvent();
+
+   @Query("select id from EventJPA")
+   Integer getIdEvent();
+
+   @Query("select description from EventJPA where id = 1")
+   String getDescriptionEvent();
+
+   @Query("select isCancelled from EventJPA where id = 1")
+   Boolean getIsCancelledEvent();
+
+   @Query("SELECT ageRange from EventJPA where id = 1 ")
+   String getAgeRangeEvent();
+
 }
