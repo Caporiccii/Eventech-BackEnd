@@ -26,6 +26,6 @@ public class Event {
         placeId = obj.getInt("PlaceId") ;
         createdBy = obj.getInt("CreatedBy") ;
         description = obj.getString("Description");
-        ageRange = obj.getString("ageRange");
+       // ageRange = obj.getString("AgeRange");
     }
 }

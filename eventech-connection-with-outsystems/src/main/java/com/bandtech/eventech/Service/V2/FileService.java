@@ -1,27 +1,13 @@
 package com.bandtech.eventech.Service.V2;
 
-import com.bandtech.eventech.Repository.IAdressRepository;
-import com.bandtech.eventech.Repository.ICategoryRepository;
-import com.bandtech.eventech.Repository.ICompanyRepository;
 import com.bandtech.eventech.Service.V1.EventService;
 import com.bandtech.eventech.interfaces.IFileExporter;
-import com.bandtech.eventech.Repository.IEventRepository;
 import com.bandtech.eventech.model.V1.Event;
-import com.bandtech.eventech.model.V2.CompanyJPA;
 import com.bandtech.eventech.model.V2.EventJPA;
-import com.opencsv.bean.StatefulBeanToCsv;
-import com.opencsv.bean.StatefulBeanToCsvBuilder;
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.*;
 import java.util.*;
 @Service
 public class FileService implements IFileExporter {
@@ -31,6 +17,20 @@ public class FileService implements IFileExporter {
     EventService eventService = new EventService();
     Event event;
     private final String NAME_ARCHIVE = "eventos.txt";
+
+    public String getNAME_ARCHIVE() {
+        return NAME_ARCHIVE;
+    }
+
+    public String getConteudoArquivo() throws IOException {
+       FileInputStream bis = new FileInputStream(new File(NAME_ARCHIVE));
+
+       byte[] conteudoArquivo = new byte[bis.available()];
+       bis.read(conteudoArquivo);
+
+       return new String(conteudoArquivo);
+    }
+
     private BufferedWriter writer;
     private Integer idEvent;
     private String nameEvent;
@@ -80,7 +80,7 @@ public class FileService implements IFileExporter {
         idEvent = GetDataEvent(eventId).getId();
         nameEvent = GetDataEvent(eventId).getName();
         descriptionEvent = GetDataEvent(eventId).getDescription();
-        ageRange = GetDataEvent(eventId).getAgeRange();
+       // ageRange = GetDataEvent(eventId).getAgeRange();
         company = GetDataEvent(eventId).getCreatedBy();
         place = GetDataEvent(eventId).getPlaceId();
         initialDate = GetDataEvent(eventId).getInitialDate();
@@ -103,7 +103,7 @@ public class FileService implements IFileExporter {
         corpo += String.format(" %-10s ",company);
         corpo += String.format(" %-10s ",descriptionEvent);
         //corpo += String.format(" %-3s ",isCancelled);
-        corpo += String.format(" %-2s ",ageRange);
+     //   corpo += String.format(" %-2s ",ageRange);
 
         contaRegistroDados++;
         gravaRegistro(NAME_ARCHIVE,corpo);

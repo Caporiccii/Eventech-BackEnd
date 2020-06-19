@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -44,11 +47,12 @@ public class EventController {
     }
 
     @GetMapping("/file/{eventId}")
-    public ResponseEntity getFile(@PathVariable("eventId") Long eventId)  {
+    public ResponseEntity getFile(@PathVariable("eventId") Long eventId) throws IOException {
 
         fileService.montaArquivo(eventId);
 
-        return ok().build();
+        return ok().header("Content-Disposition","attachment; filename=\""+fileService.getNAME_ARCHIVE()+"\"")
+                .body(fileService.getConteudoArquivo());
     }
 
 }
