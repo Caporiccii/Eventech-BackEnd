@@ -10,9 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public interface IFileExporter {
-    void gravaArquivo(List<EventJPA> lista) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException;
-
     void gravaRegistro(String nomeArq, String header);
 
-    void montaArquivo();
+    void montaArquivo(Long eventId);
 }

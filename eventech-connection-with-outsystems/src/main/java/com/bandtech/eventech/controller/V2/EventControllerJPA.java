@@ -24,6 +24,7 @@ public class EventControllerJPA {
     private  FileService fileService;
     List<EventJPA> event;
     Optional<EventJPA> eventGet;
+    Long id ;
 
     @PostMapping
     public ResponseEntity create(@RequestBody EventJPA event){
@@ -84,7 +85,7 @@ public class EventControllerJPA {
     public ResponseEntity getFile() throws CsvRequiredFieldEmptyException,
             IOException, CsvDataTypeMismatchException {
 
-      fileService.montaArquivo();
+        fileService.montaArquivo(id);
 
         return ok().build();
     }

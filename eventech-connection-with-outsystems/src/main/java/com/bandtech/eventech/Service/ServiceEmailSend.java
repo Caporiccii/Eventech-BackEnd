@@ -23,6 +23,7 @@ public class ServiceEmailSend {
     private IAdressRepository adressRepository;
     @Autowired
     private ITicketRepository ticketRepository;
+
     private DateFormatService formatService = new DateFormatService();
     private String name;
     private String category;

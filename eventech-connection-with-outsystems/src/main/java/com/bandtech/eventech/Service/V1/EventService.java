@@ -37,6 +37,7 @@ public class EventService implements IEventOut {
     public Event getForEntityV2(Long eventId) {
 
 
+
         return null;
     }
 

@@ -8,5 +8,11 @@ class DateFormatServiceTest {
 
     @Test
     void formatDate() {
+
+    }
+
+    @Test
+    void testConfiguration(){
+
     }
 }
