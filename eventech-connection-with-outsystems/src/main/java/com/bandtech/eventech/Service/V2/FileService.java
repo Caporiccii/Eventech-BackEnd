@@ -80,7 +80,7 @@ public class FileService implements IFileExporter {
         idEvent = GetDataEvent(eventId).getId();
         nameEvent = GetDataEvent(eventId).getName();
         descriptionEvent = GetDataEvent(eventId).getDescription();
-       // ageRange = GetDataEvent(eventId).getAgeRange();
+
         company = GetDataEvent(eventId).getCreatedBy();
         place = GetDataEvent(eventId).getPlaceId();
         initialDate = GetDataEvent(eventId).getInitialDate();
@@ -98,12 +98,10 @@ public class FileService implements IFileExporter {
         corpo += String.format( "  %-10s " ,nameEvent);
         corpo += String.format( "  %-10s " ,initialDate);
         corpo += String.format( "  %-10s " ,finalDate);
-      //  corpo += String.format(" %-10s ", categoria);
+
         corpo += String.format(" %-10s ",place);
         corpo += String.format(" %-10s ",company);
         corpo += String.format(" %-10s ",descriptionEvent);
-        //corpo += String.format(" %-3s ",isCancelled);
-     //   corpo += String.format(" %-2s ",ageRange);
 
         contaRegistroDados++;
         gravaRegistro(NAME_ARCHIVE,corpo);
