@@ -48,7 +48,7 @@ public class EventController {
     }
 
     @GetMapping("/file/{eventId}")
-    public ResponseEntity getFile(@PathParam("eventId") Long eventId) throws IOException {
+    public ResponseEntity getFile(@PathVariable("eventId") Long eventId) throws IOException {
 
         fileService.montaArquivo(eventId);
 
