@@ -1,7 +1,10 @@
 package com.bandtech.eventech.model.V1;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import org.json.JSONObject;
+
+import javax.persistence.Column;
 
 @Getter
 @Setter

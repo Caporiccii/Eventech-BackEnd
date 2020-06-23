@@ -47,7 +47,7 @@ public class ServiceEmailSend {
 
     try {
 
-        email.setTo("dmarco792@gmail.com");
+        email.setTo("eventech.band@gmail.com");
         email.setText("\"Olá, a Eventech vem lhe informar sobre um novo evento, que pode ser de seu interesse.\"\n" +
                 "\n" +
                 "\n" +

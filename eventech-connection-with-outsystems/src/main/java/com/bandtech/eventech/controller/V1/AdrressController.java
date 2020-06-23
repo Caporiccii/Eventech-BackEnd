@@ -31,7 +31,7 @@ public class AdrressController {
     }
 
     @DeleteMapping("/{addressId}")
-    public ResponseEntity updateUser(@PathVariable("addressId")Long addressId){
+    public ResponseEntity deleteUser(@PathVariable("addressId")Long addressId){
 
         addressService.deleteForEntity(addressId);
 
@@ -42,6 +42,7 @@ public class AdrressController {
     public ResponseEntity putForEntity(@PathVariable("addressId")Long addressId,
                                        @RequestBody Address address) {
 
+        addressService.putForEntity(addressId,address);
 
         return ok().build();
     }
