@@ -57,7 +57,7 @@ public class ServiceEmailSend {
                 "Local: "+street+" \n" +
                 "Valor do ingresso: R$:"+price+"\n" +
                 "\n" +
-                "Se for do seu interesse clique no link para mais informações. <a>asdsa</a>\n" +
+                "" +
                 "\n" +
                 "Obrigado,\n" +
                 "Eventech");
@@ -65,7 +65,7 @@ public class ServiceEmailSend {
         mailSender.send(email);
 
     }
-    catch (Exception ex){
+    catch ( Exception ex){
         System.out.println("Não foi possivel realizar o envio do email erro: " + ex);
     }
     }

@@ -1,7 +1,6 @@
 package com.bandtech.eventech.controller.V1;
 
 import com.bandtech.eventech.Service.V1.AddressService;
-import com.bandtech.eventech.interfaces.IAdressOut;
 import com.bandtech.eventech.model.V1.Address;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -59,6 +58,15 @@ class AdrressControllerTest {
 
     @Test
     void putForEntity() {
+
+        address = new Address();
+
+       // Mockito.when(addressService.putForEntity(ADDRES_ID, address)).thenReturn(address);
+
+        resposta = adrressController.getForEntity(ADDRES_ID);
+
+        assertEquals(200, resposta.getStatusCodeValue(), "ShouldBeReturn 200");
+
     }
 
     @Test

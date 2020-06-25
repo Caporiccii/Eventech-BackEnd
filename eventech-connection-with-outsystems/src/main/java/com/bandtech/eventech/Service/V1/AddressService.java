@@ -36,8 +36,9 @@ public class AddressService implements IAdressOut {
     }
 
     @Override
-    public void deleteForEntity(Long addressId) {
+    public Long deleteForEntity(Long addressId) {
                  template.delete(endPoints.addressEndpoint,addressId);
+    return addressId;
     }
 
     @Override

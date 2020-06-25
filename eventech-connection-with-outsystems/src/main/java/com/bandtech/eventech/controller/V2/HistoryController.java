@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.springframework.http.ResponseEntity.*;
+
 @RestController
 @RequestMapping("/v2/historys")
 public class HistoryController {
@@ -18,12 +20,12 @@ public class HistoryController {
 
     @GetMapping
     public ResponseEntity getHistory(){
-        history = service.addHistory();
+        history = service.addHistoryV2();
         if (history != null){
-            return ResponseEntity.ok(history);
+            return ok(history);
         }
 
-       return ResponseEntity.badRequest().build();
+       return badRequest().build();
 
     }
 }
