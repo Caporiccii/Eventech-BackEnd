@@ -1,7 +1,7 @@
 package com.bandtech.eventech.interfaces;
 
 import com.bandtech.eventech.model.V1.HistoryOut;
-import org.springframework.cloud.openfeign.FeignClient;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
