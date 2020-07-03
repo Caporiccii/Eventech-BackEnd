@@ -24,9 +24,11 @@ public class EventControllerJPA {
     private  FileService fileService;
     List<EventJPA> event;
     Optional<EventJPA> eventGet;
+    Long id ;
+
     @PostMapping
     public ResponseEntity create(@RequestBody EventJPA event){
-      repository.save(event);
+        repository.save(event);
 
         return status(201).build();
     }
@@ -82,7 +84,9 @@ public class EventControllerJPA {
     @GetMapping("/file")
     public ResponseEntity getFile() throws CsvRequiredFieldEmptyException,
             IOException, CsvDataTypeMismatchException {
-      fileService.gravaArquivo(event);
+
+        fileService.montaArquivo(id);
+
         return ok().build();
     }
 

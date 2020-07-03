@@ -1,69 +1,56 @@
 package com.bandtech.eventech.Service.V2;
 
+import com.bandtech.eventech.Service.V1.EventService;
 import com.bandtech.eventech.interfaces.IFileExporter;
-import com.bandtech.eventech.Repository.IEventRepository;
 import com.bandtech.eventech.model.V1.Event;
 import com.bandtech.eventech.model.V2.EventJPA;
-import com.opencsv.bean.StatefulBeanToCsv;
-import com.opencsv.bean.StatefulBeanToCsvBuilder;
-import com.opencsv.exceptions.CsvDataTypeMismatchException;
-import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.*;
 import java.util.*;
 @Service
 public class FileService implements IFileExporter {
-    @Autowired
-    private IEventRepository repository;
+
     @Autowired
     private DateFormatService formatService;
+    EventService eventService = new EventService();
+    Event event;
+    private final String NAME_ARCHIVE = "eventos.txt";
 
-    private final String NAME_ARCHIVE = "eventos.csv";
+    public String getNAME_ARCHIVE() {
+        return NAME_ARCHIVE;
+    }
+
+    public String getConteudoArquivo() throws IOException {
+       FileInputStream bis = new FileInputStream(new File(NAME_ARCHIVE));
+
+       byte[] conteudoArquivo = new byte[bis.available()];
+       bis.read(conteudoArquivo);
+
+       return new String(conteudoArquivo);
+    }
+
     private BufferedWriter writer;
-    private EventJPA eventJPA;
-
-// metodo para montar o objeto JPA
-
-    public List<EventJPA> consultaBanco(List<EventJPA> lista){
-        eventJPA = new EventJPA();
-        lista = repository.findAll();
-
-        for (EventJPA eventJPA : lista) {
-            eventJPA.getId();
-            eventJPA.getName();
-        }
-
-        lista.add(eventJPA);
-
-        return lista;
-    }
-    @Override
-    public void gravaArquivo(List<EventJPA> lista) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
-     /*   eventJPA = new EventJPA();
-
-        lista = repository.findAll();
-        lista.add(eventJPA);
-
-        Writer writer = Files.newBufferedWriter(Paths.get(NAME_ARCHIVE));
-
-        StatefulBeanToCsv<EventJPA> beanToCsv = new StatefulBeanToCsvBuilder(writer).build();
-
-        beanToCsv.write(lista);
-        System.out.println(lista);
-        writer.flush();
-        writer.close();
-    */
-    }
+    private Integer idEvent;
+    private String nameEvent;
+    private String descriptionEvent;
+    private boolean isCancelled;
+    private String ageRange;
+    private int company;
+    private int place;
+    private String categoria;
+    private String header;
+    private String corpo;
+    private String trailer;
+    private int contaRegistroDados;
+    private List<EventJPA> lista;
+    private String initialDate;
+    private String finalDate;
 
     @Override
     public void gravaRegistro(String nomeArquivo, String header) {
+        nomeArquivo = NAME_ARCHIVE;
         try {
 
             writer = new BufferedWriter(new FileWriter(nomeArquivo, true));
@@ -80,19 +67,48 @@ public class FileService implements IFileExporter {
         }
     }
 
+    public Event GetDataEvent(Long id){
+         event = new Event();
+
+       event = eventService.getForEntity(id);
+
+        return event;
+    }
     @Override
-    public void montaArquivo(String nomeArquivo, String header, String corpo, String trailer, int contaRegistroDados,
-                             List<EventJPA> lista) {
-        nomeArquivo = NAME_ARCHIVE;
+    public void montaArquivo(Long eventId) {
 
-        header += "Dados dos Eventos";
+        idEvent = GetDataEvent(eventId).getId();
+        nameEvent = GetDataEvent(eventId).getName();
+        descriptionEvent = GetDataEvent(eventId).getDescription();
+
+        company = GetDataEvent(eventId).getCreatedBy();
+        place = GetDataEvent(eventId).getPlaceId();
+        initialDate = GetDataEvent(eventId).getInitialDate();
+        finalDate = GetDataEvent(eventId).getFinalDate();
+
+        header += " Dados dos Eventos ";
         header += formatService.formatDate();
-        header += "01";
+        header += " 01";
 
-        gravaRegistro(nomeArquivo,header);
+        gravaRegistro(NAME_ARCHIVE,header);
+//corpo += String.format("ID,  Nome Evento, Inicio,     Término,    Categoria,  Lugar,      Empresa,    Descrição,  Cancelado, Idade");
 
-        corpo = "02";
-        corpo += "";
+        corpo = "02  ";
+        corpo += String.format("%03d",idEvent);
+        corpo += String.format( "  %-10s " ,nameEvent);
+        corpo += String.format( "  %-10s " ,initialDate);
+        corpo += String.format( "  %-10s " ,finalDate);
+
+        corpo += String.format(" %-10s ",place);
+        corpo += String.format(" %-10s ",company);
+        corpo += String.format(" %-10s ",descriptionEvent);
+
+        contaRegistroDados++;
+        gravaRegistro(NAME_ARCHIVE,corpo);
+
+        trailer += " 01 ";
+        trailer += String.format(" %010d ", contaRegistroDados);
+        gravaRegistro(NAME_ARCHIVE,trailer);
 
     }
 

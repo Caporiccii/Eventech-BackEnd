@@ -19,6 +19,7 @@ public class CategoryController {
     public ResponseEntity getForEntity(@PathVariable("categoryId") Long categoryId){
 
         response = categoryService.getForEntity(categoryId);
+
         return ok().body(response);
     }
     @PostMapping

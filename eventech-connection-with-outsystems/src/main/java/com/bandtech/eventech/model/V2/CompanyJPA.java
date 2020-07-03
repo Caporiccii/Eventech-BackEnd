@@ -28,12 +28,15 @@ public class CompanyJPA {
     private boolean isActive;
     private String socialReason;
     private String fantasyName;
+    private boolean isCompany;
 
     public CompanyJPA(String nameCompany, String password) {
         this.name = nameCompany;
         this.password = password;
     }
-
+    public boolean isCompany() {
+        return isCompany = true;
+    }
     public boolean isActive() {
         return isActive;
     }

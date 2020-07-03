@@ -16,6 +16,7 @@ import static org.springframework.http.ResponseEntity.*;
 public class CompanyControllerJPA {
     @Autowired
     private ICompanyRepository repository;
+    @Autowired
     private DateFormatService formatService;
 
     @PostMapping
