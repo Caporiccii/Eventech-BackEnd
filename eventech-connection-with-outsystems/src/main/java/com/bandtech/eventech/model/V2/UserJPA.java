@@ -32,12 +32,16 @@ public class UserJPA {
     private String creationDate;
     private int companyId;
     private boolean isActive;
+    private boolean isCompany;
 
     public UserJPA(String name, String password) {
         this.name = name;
         this.password = password;
     }
 
+    public boolean isCompany() {
+        return isCompany = false;
+    }
 
     public boolean isActive() {
         return isActive;

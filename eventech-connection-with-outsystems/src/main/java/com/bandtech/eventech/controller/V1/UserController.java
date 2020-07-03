@@ -38,12 +38,12 @@ public class UserController {
         return ok().build();
     }
 
-    @DeleteMapping("/{userId}")
+      @DeleteMapping("/{userId}")
     public ResponseEntity deleteUserById(@PathVariable("userId")Long userId){
 
         userService.deleteForEntity(userId);
 
-       return ok().build();
+        return ok().build();
     }
 
 }

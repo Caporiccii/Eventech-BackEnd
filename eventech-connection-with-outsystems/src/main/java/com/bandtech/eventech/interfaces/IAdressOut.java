@@ -7,7 +7,7 @@ public interface IAdressOut {
 
     void postForEntity(Address address);
 
-    void deleteForEntity(Long addressId);
+    Long deleteForEntity(Long addressId);
 
     void putForEntity(Long addressId, Address address);
 }

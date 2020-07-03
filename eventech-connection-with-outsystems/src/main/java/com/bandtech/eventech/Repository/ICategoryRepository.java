@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface ICategoryRepository extends JpaRepository<CategoryJPA,Integer> {
-   @Query("SELECT categoryName FROM CategoryJPA where id = id")
+   @Query("SELECT categoryName FROM CategoryJPA where id = 1")
     String getCategoryEvent();
 
 }

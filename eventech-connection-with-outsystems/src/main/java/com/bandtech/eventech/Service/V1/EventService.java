@@ -3,18 +3,21 @@ package com.bandtech.eventech.Service.V1;
 import com.bandtech.eventech.interfaces.IEventOut;
 import com.bandtech.eventech.model.V1.EndPoints;
 import com.bandtech.eventech.model.V1.Event;
+import com.bandtech.eventech.model.V1.EventMail;
 import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class EventService implements IEventOut {
     RestTemplate template = new RestTemplate();
     EndPoints endPoints = new EndPoints();
     JSONObject json ;
     Event event;
+    EventMail eventMail;
     ResponseEntity<String> response;
 
     @Override
@@ -37,7 +40,23 @@ public class EventService implements IEventOut {
     public Event getForEntityV2(Long eventId) {
 
 
+
         return null;
+    }
+
+    public EventMail getEmailForEntity(Long eventId) {
+        response = template.getForEntity(endPoints.eventEndpointEmail , String.class, eventId);
+        try {
+            json = new JSONObject(response.getBody());
+        }
+        catch (Exception e){
+            //logar a exception!!
+            System.out.println(e);
+        }
+        eventMail = new EventMail(json);
+
+
+        return eventMail;
     }
 
     @Override

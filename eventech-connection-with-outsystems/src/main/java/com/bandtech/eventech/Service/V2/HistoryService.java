@@ -5,14 +5,10 @@ import com.bandtech.eventech.Repository.ICompanyRepository;
 import com.bandtech.eventech.Repository.IEventRepository;
 import com.bandtech.eventech.Repository.ITicketRepository;
 import com.bandtech.eventech.crosscutting.PilhaObj;
-import com.bandtech.eventech.interfaces.ICategoryOut;
 import com.bandtech.eventech.model.V2.History;
-import com.bandtech.eventech.model.V2.TicketJPA;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,7 +28,7 @@ public class HistoryService {
     private List<History> historyList;
     private Integer totalEvent;
 
-    public History addHistory(){
+    public History addHistoryV2(){
         try {
             int count = ticketRepository.getCountTicket();
          String nameEvent = getNameHistoryEvent();

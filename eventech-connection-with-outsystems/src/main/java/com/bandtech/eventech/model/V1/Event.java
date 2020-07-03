@@ -13,11 +13,9 @@ public class Event {
     public String name;
     public String initialDate;
     public String finalDate;
-    public int categoryId;
     public int placeId;
     public int createdBy;
     public String description;
-    public boolean isCancelled;
     public String ageRange;
 
     public Event(JSONObject obj) {
@@ -25,11 +23,9 @@ public class Event {
         name = obj.getString("Name");
         initialDate = obj.getString("InitialDate");
         finalDate = obj.getString("FinalDate");
-        categoryId = obj.getInt("CategoryId");
         placeId = obj.getInt("PlaceId") ;
         createdBy = obj.getInt("CreatedBy") ;
         description = obj.getString("Description");
-        isCancelled = obj.has("IsCancelled");
-        ageRange = obj.getString("AgeRange");
+       // ageRange = obj.getString("AgeRange");
     }
 }
