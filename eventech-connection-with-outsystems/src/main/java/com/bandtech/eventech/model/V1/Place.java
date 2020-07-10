@@ -1,13 +1,9 @@
 package com.bandtech.eventech.model.V1;
 
-import lombok.*;
+
 import org.json.JSONObject;
 
-@Getter
-@Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class Place {
 
     private int id;
@@ -15,6 +11,9 @@ public class Place {
     private int AddressId;
     private String Description;
     private int Capacity;
+
+
+    public Place() { }
 
     public Place (JSONObject obj)
     {
@@ -25,4 +24,43 @@ public class Place {
         Capacity = obj.getInt("Capacity");
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public int getAddressId() {
+        return AddressId;
+    }
+
+    public void setAddressId(int addressId) {
+        AddressId = addressId;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public int getCapacity() {
+        return Capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        Capacity = capacity;
+    }
 }

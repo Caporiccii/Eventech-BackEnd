@@ -1,16 +1,10 @@
 package com.bandtech.eventech.model.V1;
 
-import com.sun.istack.NotNull;
-import lombok.*;
+
 import org.json.JSONObject;
 
-import javax.persistence.Column;
 
-@Getter
-@Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class Address {
     private int id;
     private String city;
@@ -26,5 +20,56 @@ public class Address {
         zipCode = obj.getString("ZipCode");
         street = obj.getString("Street");
         streetNumber = obj.getInt("StreetNumber");
+    }
+
+    public Address() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public int getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(int streetNumber) {
+        this.streetNumber = streetNumber;
     }
 }

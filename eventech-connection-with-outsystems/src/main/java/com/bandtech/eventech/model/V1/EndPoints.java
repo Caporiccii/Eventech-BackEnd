@@ -1,8 +1,6 @@
 package com.bandtech.eventech.model.V1;
 
-import lombok.*;
-@AllArgsConstructor
-@ToString
+
 
 public class EndPoints {
 

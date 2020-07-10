@@ -22,6 +22,7 @@ public class PlaceControllerJPA {
     public ResponseEntity create(@RequestBody PlaceJPA place){
         repository.save(place);
 
+
         return status(201).build();
     }
     @GetMapping("/{placeId}")
