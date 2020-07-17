@@ -19,14 +19,14 @@ public class SwaggerConfig  extends WebMvcConfigurationSupport {
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.eventech.Auth.controllers"))
+                .apis(RequestHandlerSelectors.basePackage("com.bandtech.eventech.controller"))
                 .build()
                 .apiInfo(metaData());
     }
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
-                .title("Auth")
-                .description("\"Api Responsavel por gerar o token jwt\"")
+                .title("CRUD")
+                .description("\"Api Responsavel por Todo Funcionamento do Portal\"")
                 .version("1.0.0")
                 .license("Apache License Version 2.0")
                 .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")
