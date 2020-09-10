@@ -2,11 +2,13 @@ package com.bandtech.eventech.controller.V1;
 
 import com.bandtech.eventech.Service.V1.AddressService;
 import com.bandtech.eventech.model.V1.Address;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.http.ResponseEntity.*;
-
+@Api(value = "Endereço evento")
 @RestController
 @RequestMapping("/address")
 public class AdrressController {
@@ -14,6 +16,7 @@ public class AdrressController {
     AddressService addressService = new AddressService();
     Address response;
 
+    @ApiOperation(value = "Retorna endereço")
     @GetMapping("/{addressId}")
     public ResponseEntity getForEntity(@PathVariable("addressId")Long addressId)
     {

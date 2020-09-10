@@ -1,13 +1,9 @@
 package com.bandtech.eventech.model.V1;
 
 
-import lombok.*;
+
 import org.json.JSONObject;
 
-@Getter @Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
 public class Ticket {
     public int id;
     public String name;
@@ -20,6 +16,9 @@ public class Ticket {
     public boolean isPayment;
     public double price;
 
+    public Ticket(){
+
+    }
 
     public Ticket(JSONObject obj) {
         this.id = obj.getInt("Id");
@@ -45,4 +44,83 @@ public class Ticket {
         isReturn = true;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getInitialDate() {
+        return initialDate;
+    }
+
+    public void setInitialDate(String initialDate) {
+        this.initialDate = initialDate;
+    }
+
+    public String getFinalDate() {
+        return finalDate;
+    }
+
+    public void setFinalDate(String finalDate) {
+        this.finalDate = finalDate;
+    }
+
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
+    }
+
+    public int getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
+    }
+
+    public int getQtdPerPerson() {
+        return qtdPerPerson;
+    }
+
+    public void setQtdPerPerson(int qtdPerPerson) {
+        this.qtdPerPerson = qtdPerPerson;
+    }
+
+    public int getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(int buyer) {
+        this.buyer = buyer;
+    }
+
+    public boolean isPayment() {
+        return isPayment;
+    }
+
+    public void setPayment(boolean payment) {
+        isPayment = payment;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }

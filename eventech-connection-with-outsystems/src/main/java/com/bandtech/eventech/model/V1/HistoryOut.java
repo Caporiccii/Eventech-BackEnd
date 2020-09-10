@@ -1,15 +1,10 @@
 package com.bandtech.eventech.model.V1;
 
 
-import com.bandtech.eventech.model.V2.History;
-import lombok.*;
+
 import org.json.JSONObject;
 
-@Getter
-@Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class HistoryOut {
 
     private Long id;
@@ -18,6 +13,8 @@ public class HistoryOut {
     private String initialDate;
     private String finalDate;
     private String category;
+
+    public HistoryOut() { }
 
     public HistoryOut(JSONObject obj) {
         this.id =  obj.getLong("Id");
@@ -28,7 +25,13 @@ public class HistoryOut {
         category = obj.getString("Category");
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return Name;

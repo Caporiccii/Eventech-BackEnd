@@ -1,17 +1,11 @@
 package com.bandtech.eventech.model.V2;
 
-import lombok.*;
-import org.json.JSONObject;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Getter @Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 public class CategoryJPA {
     @Id
@@ -21,5 +15,36 @@ public class CategoryJPA {
     private String categoryName;
     private String Description;
 
+    public CategoryJPA() {
+    }
 
+    public CategoryJPA(int id, String categoryName, String description) {
+        this.id = id;
+        this.categoryName = categoryName;
+        Description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
 }

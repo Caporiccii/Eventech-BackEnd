@@ -1,18 +1,11 @@
 package com.bandtech.eventech.model.V2;
 
 
-import lombok.*;
-import org.json.JSONObject;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Getter @Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class TicketJPA {
     @Id
@@ -29,4 +22,100 @@ public class TicketJPA {
     public boolean isPayment;
     public double price;
 
+    public TicketJPA() {
+    }
+
+    public TicketJPA(int id, String name, String initialDate, String finalDate, int eventId, int qtd, int qtdPerPerson,
+                     int buyer, boolean isPayment, double price) {
+        this.id = id;
+        this.name = name;
+        this.initialDate = initialDate;
+        this.finalDate = finalDate;
+        this.eventId = eventId;
+        this.qtd = qtd;
+        this.qtdPerPerson = qtdPerPerson;
+        this.buyer = buyer;
+        this.isPayment = isPayment;
+        this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getInitialDate() {
+        return initialDate;
+    }
+
+    public void setInitialDate(String initialDate) {
+        this.initialDate = initialDate;
+    }
+
+    public String getFinalDate() {
+        return finalDate;
+    }
+
+    public void setFinalDate(String finalDate) {
+        this.finalDate = finalDate;
+    }
+
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
+    }
+
+    public int getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
+    }
+
+    public int getQtdPerPerson() {
+        return qtdPerPerson;
+    }
+
+    public void setQtdPerPerson(int qtdPerPerson) {
+        this.qtdPerPerson = qtdPerPerson;
+    }
+
+    public int getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(int buyer) {
+        this.buyer = buyer;
+    }
+
+    public boolean isPayment() {
+        return isPayment;
+    }
+
+    public void setPayment(boolean payment) {
+        isPayment = payment;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 }
