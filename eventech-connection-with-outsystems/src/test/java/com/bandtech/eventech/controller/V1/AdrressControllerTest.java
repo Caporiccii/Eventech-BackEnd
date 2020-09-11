@@ -31,18 +31,7 @@ class AdrressControllerTest {
     Method putForEntity;
     Method deleteUser;
     Address address;
-    @Test
-    void getForEntity()  {
 
-        address = new Address();
-
-        Mockito.when(addressService.getForEntity(ADDRES_ID)).thenReturn(address);
-
-        resposta = adrressController.getForEntity(ADDRES_ID);
-
-        assertEquals(200, resposta.getStatusCodeValue(), "ShouldBeReturn 200");
-
-    }
 
     @Test
     void postForEntity() {
@@ -56,18 +45,7 @@ class AdrressControllerTest {
     void deleteUser() {
     }
 
-    @Test
-    void putForEntity() {
 
-        address = new Address();
-
-       // Mockito.when(addressService.putForEntity(ADDRES_ID, address)).thenReturn(address);
-
-        resposta = adrressController.getForEntity(ADDRES_ID);
-
-        assertEquals(200, resposta.getStatusCodeValue(), "ShouldBeReturn 200");
-
-    }
 
     @Test
     void testConfig() throws NoSuchMethodException {
