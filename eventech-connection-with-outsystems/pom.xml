@@ -11,7 +11,7 @@
 	<groupId>com.bandtech</groupId>
 	<artifactId>eventech</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>eventech-rest-template</name>
+	<name>event-rest-template</name>
 	<description>Consumes Rest API</description>
 
 	<properties>
@@ -80,16 +80,5 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-	
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-
-
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

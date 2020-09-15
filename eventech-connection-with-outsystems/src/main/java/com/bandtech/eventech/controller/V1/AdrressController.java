@@ -28,8 +28,8 @@ public class AdrressController {
     @PostMapping
     public ResponseEntity postForEntity(@RequestBody Address address)
     {
-        addressService.postForEntity(address);
-
+     //   addressService.postForEntity(address);
+addressService.postForEntity(address);
         return status(201).build();
     }
 

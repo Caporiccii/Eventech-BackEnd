@@ -16,6 +16,7 @@ public class Category {
         id = obj.getInt("Id");
         Name = obj.getString("Name");
         Description = obj.getString("Description");
+
     }
 
     public int getId() {
