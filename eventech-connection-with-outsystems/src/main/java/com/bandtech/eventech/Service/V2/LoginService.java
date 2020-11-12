@@ -40,16 +40,16 @@ public class LoginService  {
     private UserJPA user;
     private CompanyJPA company;
     private boolean result;
-    public Boolean logUsu(@PathParam("nome") String nome,
+    public Boolean logUsu(@PathParam("email") String email,
                            @PathParam("senha") String senha) {
 
-        usuarios = repository.getNameandPassword(nome,senha);
+        usuarios = repository.getNameandPassword(email,senha);
         user= new UserJPA();
         usuarios.add(user);
         for (UserJPA user : usuarios) {
             loginUser = user.getName();
             senhaUser = user.getPassword();
-            if (!nome.equals(loginUser) && !senha.equals(senhaUser)) {
+            if (!email.equals(loginUser) && !senha.equals(senhaUser)) {
                 System.out.println("Login inválido");
                 return  result =false;
             } else {
@@ -60,18 +60,18 @@ public class LoginService  {
   return result;
 
     }
-    public Boolean logEmp(@PathParam("nome") String nome,
+    public Boolean logEmp(@PathParam("email") String email,
                           @PathParam("senha") String senha) {
 
-        empresas = companyRepository.getCompanyandPassword(nome,senha);
+        empresas = companyRepository.getCompanyandPassword(email,senha);
         company = new CompanyJPA();
         empresas.add(company);
 
 
         for (CompanyJPA company : empresas) {
-            loginCompany = company.getName();
+            loginCompany = company.getEmail();
             senhaCompany = company.getPassword();
-            if (!nome.equals(loginCompany) && !senha.equals(senhaCompany)) {
+            if (!email.equals(loginCompany) && !senha.equals(senhaCompany)) {
                 System.out.println("Login inválido");
                 return  result =false;
             } else {

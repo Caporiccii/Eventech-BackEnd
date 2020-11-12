@@ -10,8 +10,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ICompanyRepository extends JpaRepository<CompanyJPA,Integer> {
-    @Query("select a from CompanyJPA a where a.name in :nome and a.password in :senha")
-    List<CompanyJPA> getCompanyandPassword(@Param("nome") String nome,
+    @Query("select a from CompanyJPA a where a.name in :email and a.password in :senha")
+    List<CompanyJPA> getCompanyandPassword(@Param("email") String email,
                                             @Param("senha") String senha);
     @Query("SELECT name FROM CompanyJPA where id = 1")
     String getNameCompany();
