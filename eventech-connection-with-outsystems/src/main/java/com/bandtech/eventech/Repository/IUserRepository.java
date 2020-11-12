@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IUserRepository extends JpaRepository<UserJPA,Integer> {
 
-    @Query("select a from UserJPA a where a.email in :nome and a.password in :senha")
+    @Query("select a from UserJPA a where a.email in :email and a.password in :senha")
     List<UserJPA> getNameandPassword(@Param("email") String email,
                                      @Param("senha") String senha);
 }
