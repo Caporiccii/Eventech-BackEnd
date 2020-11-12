@@ -21,10 +21,10 @@ public class LoginControllerJPA {
     Boolean response = true;
 
    @GetMapping ("/{nome}/{senha}")
-    public ResponseEntity logUser(@PathVariable("nome") String nome,
+    public ResponseEntity logUser(@PathVariable("email") String email,
                                   @PathVariable("senha") String senha)
    {
-       response = loginService.logUsu(nome,senha);
+       response = loginService.logUsu(email,senha);
 
        if (!response)
        {
@@ -36,9 +36,9 @@ public class LoginControllerJPA {
    }
 
     @GetMapping ("/empresa/{nome}/{senha}")
-    public ResponseEntity logEmpresa(@PathVariable("nome") String nome, @PathVariable("senha") String senha){
+    public ResponseEntity logEmpresa(@PathVariable("email") String email, @PathVariable("senha") String senha){
 
-        response = loginService.logEmp(nome,senha);
+        response = loginService.logEmp(email,senha);
 
          if (!response)
         {

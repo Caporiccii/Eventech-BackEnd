@@ -47,7 +47,7 @@ public class LoginService  {
         user= new UserJPA();
         usuarios.add(user);
         for (UserJPA user : usuarios) {
-            loginUser = user.getName();
+            loginUser = user.getEmail();
             senhaUser = user.getPassword();
             if (!email.equals(loginUser) && !senha.equals(senhaUser)) {
                 System.out.println("Login inválido");
