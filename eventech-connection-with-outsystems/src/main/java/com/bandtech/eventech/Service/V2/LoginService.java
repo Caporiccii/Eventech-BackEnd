@@ -6,6 +6,8 @@ import com.bandtech.eventech.model.V1.Company;
 import com.bandtech.eventech.model.V1.User;
 import com.bandtech.eventech.model.V2.CompanyJPA;
 import com.bandtech.eventech.model.V2.UserJPA;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Example;
@@ -40,26 +42,39 @@ public class LoginService  {
     private UserJPA user;
     private CompanyJPA company;
     private boolean result;
+    private final Logger logger = LogManager.getLogger(LoginService.class);
+
     public Boolean logUsu(@PathParam("email") String email,
                            @PathParam("senha") String senha) {
+try {
+    findUserEmailAndPassword(email, senha);
 
+    for (UserJPA user : usuarios) {
+        loginUser = user.getEmail();
+        senhaUser = user.getPassword();
+        if (!email.equals(loginUser) && !senha.equals(senhaUser)) {
+            logger.error("Login inválido");
+            return result = false;
+        } else {
+            logger.info("Login Válido");
+            return result = true;
+        }
+    }
+    return result;
+}
+   catch (Exception exception){
+    logger.error(exception + " Não foi possivel verificar seu login");
+    return  result;
+   }
+  }
+
+    public void findUserEmailAndPassword(String email, String senha){
         usuarios = repository.getNameandPassword(email,senha);
         user= new UserJPA();
         usuarios.add(user);
-        for (UserJPA user : usuarios) {
-            loginUser = user.getEmail();
-            senhaUser = user.getPassword();
-            if (!email.equals(loginUser) && !senha.equals(senhaUser)) {
-                System.out.println("Login inválido");
-                return  result =false;
-            } else {
-                System.out.println("Login Válido");
-                return result=  true;
-            }
-        }
-  return result;
-
     }
+
+
     public Boolean logEmp(@PathParam("email") String email,
                           @PathParam("senha") String senha) {
 
@@ -72,10 +87,10 @@ public class LoginService  {
             loginCompany = company.getEmail();
             senhaCompany = company.getPassword();
             if (!email.equals(loginCompany) && !senha.equals(senhaCompany)) {
-                System.out.println("Login inválido");
+                logger.error("Login inválido");
                 return  result =false;
             } else {
-                System.out.println("Login Válido");
+                logger.info("Login Válido");
                 return result=  true;
             }
         }
