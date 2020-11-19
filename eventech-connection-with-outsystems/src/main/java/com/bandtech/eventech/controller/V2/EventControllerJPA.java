@@ -45,6 +45,16 @@ public class EventControllerJPA {
         }
     }
 
+    @GetMapping
+    public ResponseEntity getListId(){
+        event = repository.findAll();
+
+        if (event.isEmpty())
+            return noContent().build();
+        else
+            return ok(event);
+    }
+
     @DeleteMapping("/{eventd}")
     public ResponseEntity delete(@PathVariable int eventId){
         if (this.repository.existsById(eventId)) {

@@ -5,8 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 
 @Entity
@@ -15,7 +13,7 @@ public class UserJPA {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
+    private String nameUser;
     private String password;
     private String surname;
     private String email;
@@ -32,14 +30,14 @@ public class UserJPA {
     }
 
     public UserJPA(String name, String password) {
-        this.name = name;
+        this.nameUser = name;
         this.password = password;
     }
 
-    public UserJPA(int id, String name, String password, String surname, String email, String sex, LocalDate dateBorn
+    public UserJPA(int id, String nameUser, String password, String surname, String email, String sex, LocalDate dateBorn
             , String cpf, String phone, String creationDate, int companyId, boolean isActive, boolean isCompany) {
         this.id = id;
-        this.name = name;
+        this.nameUser = nameUser;
         this.password = password;
         this.surname = surname;
         this.email = email;
@@ -62,11 +60,11 @@ public class UserJPA {
     }
 
     public String getName() {
-        return name;
+        return nameUser;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nameUser) {
+        this.nameUser = nameUser;
     }
 
     public String getPassword() {
