@@ -26,10 +26,12 @@ public class EventControllerJPA {
     Optional<EventJPA> eventGet;
     Long id ;
 
-    @PostMapping
-    public ResponseEntity create(@RequestBody EventJPA event){
-        repository.save(event);
+    //TODO Endpoint criar eventos com novos campos
+    //Campo de imagem(ok), cidade, preço e categoria
 
+    @PostMapping
+    public ResponseEntity create(@RequestBody EventJPA event) {
+        repository.save(event);
         return status(201).build();
     }
     @GetMapping("/{eventId}")

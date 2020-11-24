@@ -1,13 +1,14 @@
-package com.bandtech.eventech.model.V2;
+package com.bandtech.eventech.model.V3;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import java.math.BigDecimal;
 
 @Entity
-public class EventJPA {
+public class EventForMobile {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
@@ -17,32 +18,36 @@ public class EventJPA {
     public String finalDate;
     public String initialHour;
     public String finalHour;
-    public int categoryId;
-    public int placeId;
     public int createdBy;
     public String description;
     public boolean isCancelled;
     public String ageRange;
     public String imageSource;
+    public String city;
+    public BigDecimal price;
+    public String category;
 
-    public EventJPA() {
-    }
-
-    public EventJPA(int id, String name, String initialDate, String finalDate, String initialHour, String finalHour,
-                    int categoryId, int placeId, int createdBy, String description, boolean isCancelled, String ageRange, String imageSource) {
+    public EventForMobile(int id, String name, String initialDate, String finalDate, String initialHour,
+                          String finalHour, int createdBy, String description,
+                          boolean isCancelled, String ageRange, String imageSource, String city, BigDecimal price,
+                          String category) {
         this.id = id;
         this.name = name;
         this.initialDate = initialDate;
         this.finalDate = finalDate;
         this.initialHour = initialHour;
         this.finalHour = finalHour;
-        this.categoryId = categoryId;
-        this.placeId = placeId;
         this.createdBy = createdBy;
         this.description = description;
         this.isCancelled = isCancelled;
         this.ageRange = ageRange;
         this.imageSource = imageSource;
+        this.city = city;
+        this.price = price;
+        this.category = category;
+    }
+
+    public EventForMobile() {
     }
 
     public int getId() {
@@ -93,22 +98,6 @@ public class EventJPA {
         this.finalHour = finalHour;
     }
 
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public int getPlaceId() {
-        return placeId;
-    }
-
-    public void setPlaceId(int placeId) {
-        this.placeId = placeId;
-    }
-
     public int getCreatedBy() {
         return createdBy;
     }
@@ -130,6 +119,7 @@ public class EventJPA {
     }
 
     public void setCancelled(boolean cancelled) {
+        cancelled = false;
         isCancelled = cancelled;
     }
 
@@ -141,7 +131,35 @@ public class EventJPA {
         this.ageRange = ageRange;
     }
 
-    public String getImageSource() { return imageSource;}
+    public String getImageSource() {
+        return imageSource;
+    }
 
-    public void setImageSource(String imageSource) { this.imageSource = imageSource;}
+    public void setImageSource(String imageSource) {
+        this.imageSource = imageSource;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }
