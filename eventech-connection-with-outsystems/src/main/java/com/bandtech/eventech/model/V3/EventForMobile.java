@@ -20,17 +20,16 @@ public class EventForMobile {
     public String finalHour;
     public int createdBy;
     public String description;
-    public boolean isCancelled;
-    public String ageRange;
     public String imageSource;
     public String city;
     public BigDecimal price;
     public String category;
+    public String link;
+    public String cep;
 
     public EventForMobile(int id, String name, String initialDate, String finalDate, String initialHour,
-                          String finalHour, int createdBy, String description,
-                          boolean isCancelled, String ageRange, String imageSource, String city, BigDecimal price,
-                          String category) {
+                          String finalHour, int createdBy, String description, String imageSource, String city,
+                          BigDecimal price, String category, String link, String cep) {
         this.id = id;
         this.name = name;
         this.initialDate = initialDate;
@@ -39,15 +38,12 @@ public class EventForMobile {
         this.finalHour = finalHour;
         this.createdBy = createdBy;
         this.description = description;
-        this.isCancelled = isCancelled;
-        this.ageRange = ageRange;
         this.imageSource = imageSource;
         this.city = city;
         this.price = price;
         this.category = category;
-    }
-
-    public EventForMobile() {
+        this.link = link;
+        this.cep = cep;
     }
 
     public int getId() {
@@ -114,23 +110,6 @@ public class EventForMobile {
         this.description = description;
     }
 
-    public boolean isCancelled() {
-        return isCancelled;
-    }
-
-    public void setCancelled(boolean cancelled) {
-        cancelled = false;
-        isCancelled = cancelled;
-    }
-
-    public String getAgeRange() {
-        return ageRange;
-    }
-
-    public void setAgeRange(String ageRange) {
-        this.ageRange = ageRange;
-    }
-
     public String getImageSource() {
         return imageSource;
     }
@@ -161,5 +140,21 @@ public class EventForMobile {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 }
