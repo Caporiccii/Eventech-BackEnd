@@ -27,6 +27,9 @@ public class EventForMobile {
     public String link;
     public String cep;
 
+    public EventForMobile() {
+    }
+
     public EventForMobile(int id, String name, String initialDate, String finalDate, String initialHour,
                           String finalHour, int createdBy, String description, String imageSource, String city,
                           BigDecimal price, String category, String link, String cep) {
