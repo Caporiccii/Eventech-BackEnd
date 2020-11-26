@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.http.ResponseEntity.*;
 
@@ -21,6 +22,15 @@ private IEventForMobileRepository eventForMobileRepository;
         List<EventForMobile> eventForMobile = eventForMobileRepository.findAll();
         if (eventForMobile.isEmpty())
             return noContent().build();
+        else
+            return ok(eventForMobile);
+    }
+
+    @GetMapping("/{eventId}")
+    public ResponseEntity getEventsById(@PathVariable("eventId") int eventId){
+        Optional<EventForMobile> eventForMobile = eventForMobileRepository.findById(eventId);
+        if (!eventForMobile.isPresent())
+            return badRequest().build();
         else
             return ok(eventForMobile);
     }
