@@ -11,7 +11,7 @@ public class EventForMobile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    public int idEventMobile;
 
     public String name;
     public String initialDate;
@@ -26,12 +26,32 @@ public class EventForMobile {
     public String category;
     public String link;
     public String cep;
+    public Integer ticketId;
 
+    public EventForMobile(int idEventMobile, String name, String initialDate, String finalDate, String initialHour,
+                          String finalHour, int createdBy, String description, String imageSource, String city,
+                          BigDecimal price, String category, String link, String cep, Integer ticketId) {
+        this.idEventMobile = idEventMobile;
+        this.name = name;
+        this.initialDate = initialDate;
+        this.finalDate = finalDate;
+        this.initialHour = initialHour;
+        this.finalHour = finalHour;
+        this.createdBy = createdBy;
+        this.description = description;
+        this.imageSource = imageSource;
+        this.city = city;
+        this.price = price;
+        this.category = category;
+        this.link = link;
+        this.cep = cep;
+        this.ticketId = ticketId;
+    }
 
-    public EventForMobile(int id, String name, String initialDate, String finalDate, String initialHour,
+    public EventForMobile(int idEventMobile, String name, String initialDate, String finalDate, String initialHour,
                           String finalHour, int createdBy, String description,
-                           String imageSource, String city, BigDecimal price, String category) {
-        this.id = id;
+                          String imageSource, String city, BigDecimal price, String category) {
+        this.idEventMobile = idEventMobile;
         this.name = name;
         this.initialDate = initialDate;
         this.finalDate = finalDate;
@@ -49,11 +69,11 @@ public class EventForMobile {
     }
 
     public int getId() {
-        return id;
+        return idEventMobile;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int idEventMobile) {
+        this.idEventMobile = idEventMobile;
     }
 
     public String getName() {
@@ -142,5 +162,29 @@ public class EventForMobile {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public Integer getTicketId() {
+        return ticketId;
+    }
+
+    public void setTicketId(Integer ticketId) {
+        this.ticketId = ticketId;
     }
 }
