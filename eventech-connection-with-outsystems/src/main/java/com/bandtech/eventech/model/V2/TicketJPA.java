@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class TicketJPA {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    public int idTicket;
 
     public String name;
     public String initialDate;
@@ -27,7 +27,7 @@ public class TicketJPA {
 
     public TicketJPA(int id, String name, String initialDate, String finalDate, int eventId, int qtd, int qtdPerPerson,
                      int buyer, boolean isPayment, double price) {
-        this.id = id;
+        this.idTicket = id;
         this.name = name;
         this.initialDate = initialDate;
         this.finalDate = finalDate;
@@ -39,12 +39,12 @@ public class TicketJPA {
         this.price = price;
     }
 
-    public int getId() {
-        return id;
+    public int getIdEvent() {
+        return idTicket;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEvent(int idEvent) {
+        this.idTicket = idEvent;
     }
 
     public String getName() {
