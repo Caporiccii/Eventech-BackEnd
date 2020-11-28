@@ -37,7 +37,7 @@ public class ServiceEmailSend {
             return eventMail;
         }
         catch (Exception exception){
-            logger.info(exception + "Erro ao capturar erros!");
+            logger.info(exception + "Erro ao capturar dados!");
             return eventMail;
         }
         }
