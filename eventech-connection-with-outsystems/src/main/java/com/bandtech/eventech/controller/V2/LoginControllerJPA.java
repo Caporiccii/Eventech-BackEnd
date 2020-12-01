@@ -58,4 +58,15 @@ public class LoginControllerJPA {
         else
             return badRequest().build();
     }
+
+    @PutMapping("/company/{companyId}")
+    public ResponseEntity updateLogCompany (@PathVariable("companyId") Integer companyId)
+    {
+        boolean isUpdated = loginService.updateLogCompany(companyId);
+
+        if (isUpdated)
+            return ok().build();
+        else
+            return badRequest().build();
+    }
 }
