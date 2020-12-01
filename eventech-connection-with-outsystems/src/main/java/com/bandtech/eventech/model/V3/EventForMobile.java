@@ -23,11 +23,10 @@ public class EventForMobile {
     public String category;
     public String link;
     public String cep;
-    public Integer ticketId;
 
     public EventForMobile(int idEventMobile, String name, String initialDate, String finalDate, String initialHour,
                           String finalHour, int createdBy, String description, String imageSource, String city,
-                          BigDecimal price, String category, String link, String cep, Integer ticketId) {
+                          BigDecimal price, String category, String link, String cep) {
         this.idEventMobile = idEventMobile;
         this.name = name;
         this.initialDate = initialDate;
@@ -42,7 +41,6 @@ public class EventForMobile {
         this.category = category;
         this.link = link;
         this.cep = cep;
-        this.ticketId = ticketId;
     }
 
     public EventForMobile(int idEventMobile, String name, String initialDate, String finalDate, String initialHour,
@@ -175,13 +173,5 @@ public class EventForMobile {
 
     public void setCep(String cep) {
         this.cep = cep;
-    }
-
-    public Integer getTicketId() {
-        return ticketId;
-    }
-
-    public void setTicketId(Integer ticketId) {
-        this.ticketId = ticketId;
     }
 }

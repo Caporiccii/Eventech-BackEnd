@@ -2,10 +2,12 @@ package com.bandtech.eventech.controller.V2;
 
 import com.bandtech.eventech.model.V2.TicketJPA;
 import com.bandtech.eventech.Repository.ITicketRepository;
+import com.bandtech.eventech.model.V3.EventForMobile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +26,7 @@ public class TicketControllerJPA {
         repository.save(ticket);
         return status(201).build();
     }
+
     @GetMapping("/{ticketId}")
     public ResponseEntity get(@PathVariable int ticketId){
         Optional<TicketJPA> ticket = repository.findById(ticketId);
@@ -90,5 +93,14 @@ public class TicketControllerJPA {
             return ok(sum);
         else
             return noContent().build();
+    }
+
+    @GetMapping("/{eventId}")
+    public ResponseEntity getTicketByEventId(@PathParam("eventId") Integer eventId) {
+        List<TicketJPA> tickets = repository.getTicketsByEventId(eventId);
+        if (tickets.isEmpty())
+            return noContent().build();
+        else
+            return ok(tickets);
     }
 }

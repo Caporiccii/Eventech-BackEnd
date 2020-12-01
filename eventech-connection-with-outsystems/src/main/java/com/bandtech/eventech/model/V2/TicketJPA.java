@@ -15,6 +15,8 @@ public class TicketJPA {
     public String name;
     public String initialDate;
     public String finalDate;
+    public String initialTime;
+    public String finalTime;
     public int eventId;
     public int qtd;
     public int qtdPerPerson;
@@ -25,12 +27,14 @@ public class TicketJPA {
     public TicketJPA() {
     }
 
-    public TicketJPA(int id, String name, String initialDate, String finalDate, int eventId, int qtd, int qtdPerPerson,
-                     int buyer, boolean isPayment, double price) {
+    public TicketJPA(int id, String name, String initialDate, String finalDate, String initialTime, String finalTime,
+                     int eventId, int qtd, int qtdPerPerson, int buyer, boolean isPayment, double price) {
         this.idTicket = id;
         this.name = name;
         this.initialDate = initialDate;
         this.finalDate = finalDate;
+        this.initialTime = initialTime;
+        this.finalTime = finalTime;
         this.eventId = eventId;
         this.qtd = qtd;
         this.qtdPerPerson = qtdPerPerson;
@@ -38,6 +42,7 @@ public class TicketJPA {
         this.isPayment = isPayment;
         this.price = price;
     }
+
 
     public int getIdEvent() {
         return idTicket;
@@ -69,6 +74,22 @@ public class TicketJPA {
 
     public void setFinalDate(String finalDate) {
         this.finalDate = finalDate;
+    }
+
+    public String getInitialTime() {
+        return initialTime;
+    }
+
+    public void setInitialTime(String initialTime) {
+        this.initialTime = initialTime;
+    }
+
+    public String getFinalTime() {
+        return finalTime;
+    }
+
+    public void setFinalTime(String finalTime) {
+        this.finalTime = finalTime;
     }
 
     public int getEventId() {
