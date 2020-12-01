@@ -8,9 +8,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LoginService  {
@@ -27,6 +29,7 @@ public class LoginService  {
     private UserJPA user;
     private CompanyJPA company;
     private boolean result;
+    private boolean isUpdated;
     private final Logger logger = LogManager.getLogger(LoginService.class);
 
 
@@ -38,11 +41,15 @@ try {
     for (UserJPA user : usuarios) {
         loginUser = user.getEmail();
         senhaUser = user.getPassword();
+
         if (!email.equals(loginUser) && !senha.equals(senhaUser)) {
             logger.error("Login inválido");
             return result = false;
         } else {
             logger.info("Login Válido");
+            user.setActive(true);
+            user.isActive();
+            this.repository.save(user);
             return result = true;
         }
     }
@@ -75,11 +82,50 @@ try {
             if (!email.equals(loginCompany) && !senha.equals(senhaCompany)) {
                 logger.error("Login inválido");
                 return  result =false;
+
             } else {
+                company.setActive(true);
+
+                company.isActive();
+                this.companyRepository.save(company);
+
                 logger.info("Login Válido");
                 return result=  true;
             }
         }
         return result;
 }
+    public boolean updateLogUser (@PathVariable("userId") Integer userId){
+
+        Optional<UserJPA> userLogged = repository.findById(userId);
+
+        if (userLogged.isPresent()){
+         user = userLogged.get();
+
+            user.setActive(false);
+            user.isActive();
+
+          this.repository.save(user);
+            return isUpdated = true;
+        }
+        else{
+            return isUpdated = false;
+    }}
+
+    public boolean updateLogCompany (@PathVariable("companyId") Integer companyId){
+
+        Optional<CompanyJPA> companyLogged = companyRepository.findById(companyId);
+
+        if (companyLogged.isPresent()){
+            company = companyLogged.get();
+
+            company.setActive(false);
+            company.isActive();
+
+            this.companyRepository.save(company);
+            return isUpdated = true;
+        }
+        else{
+            return isUpdated = false;
+        }}
 }
