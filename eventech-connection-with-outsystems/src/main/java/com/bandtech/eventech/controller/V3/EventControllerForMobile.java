@@ -39,8 +39,8 @@ private IEventForMobileRepository eventForMobileRepository;
     public ResponseEntity postEvents(@RequestBody EventForMobile eventForMobile){
         eventForMobileRepository.save(eventForMobile);
 
-        return status(201).build();
-    }
+        return status(201).body(eventForMobile.idEventMobile);
+      }
 
     @DeleteMapping("/{eventId}")
     public ResponseEntity deleteEventById(@PathVariable("eventId") int eventId){
