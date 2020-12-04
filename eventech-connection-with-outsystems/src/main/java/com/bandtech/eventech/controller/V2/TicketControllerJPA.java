@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,12 +93,15 @@ public class TicketControllerJPA {
             return noContent().build();
     }
 
-    @GetMapping("/event/{eventId}")
-    public ResponseEntity getTicketByEventId(@PathParam("eventId") Integer eventId) {
-        List<TicketJPA> tickets = repository.getTicketsByEventId(eventId);
+    @GetMapping("/event/{fk_event}")
+    public ResponseEntity getTicketByEventId(@PathVariable("fk_event") Integer fk_event) {
+
+        List<TicketJPA> tickets = repository.getTicketsByEventId(fk_event);
+
         if (tickets.isEmpty())
             return noContent().build();
         else
             return ok(tickets);
     }
+
 }

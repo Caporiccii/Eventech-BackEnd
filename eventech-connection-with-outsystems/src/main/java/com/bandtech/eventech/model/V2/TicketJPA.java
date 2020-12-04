@@ -1,13 +1,16 @@
 package com.bandtech.eventech.model.V2;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
+@SqlResultSetMapping(name="TicketJPA", entities={
+        @EntityResult(
+                entityClass = com.bandtech.eventech.model.V2.TicketJPA.class
+        )}
+)
 @Entity
-public class TicketJPA {
+public class TicketJPA implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int idTicket;
@@ -21,13 +24,14 @@ public class TicketJPA {
     public int buyer;
     public boolean isPayment;
     public double price;
+    public int fk_event;
 
     public TicketJPA() {
     }
 
-    public TicketJPA(int id, String name, String initialDate, String finalDate, int eventId, int qtd, int qtdPerPerson,
-                     int buyer, boolean isPayment, double price) {
-        this.idTicket = id;
+    public TicketJPA(int idTicket, String name, String initialDate, String finalDate, int eventId, int qtd,
+                     int qtdPerPerson, int buyer, boolean isPayment, double price, int fk_event) {
+        this.idTicket = idTicket;
         this.name = name;
         this.initialDate = initialDate;
         this.finalDate = finalDate;
@@ -37,6 +41,7 @@ public class TicketJPA {
         this.buyer = buyer;
         this.isPayment = isPayment;
         this.price = price;
+        this.fk_event = fk_event;
     }
 
     public int getIdEvent() {
@@ -117,5 +122,15 @@ public class TicketJPA {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "idEventMobile")
+    public int getFk_event() {
+        return fk_event;
+    }
+
+    public void setFk_event(int fk_event) {
+        this.fk_event = fk_event;
     }
 }
