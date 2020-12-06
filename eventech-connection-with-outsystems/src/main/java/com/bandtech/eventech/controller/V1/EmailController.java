@@ -1,6 +1,6 @@
 package com.bandtech.eventech.controller.V1;
 
-import com.bandtech.eventech.Service.ServiceEmailSend;
+import com.bandtech.eventech.Service.V1.ServiceEmailSend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

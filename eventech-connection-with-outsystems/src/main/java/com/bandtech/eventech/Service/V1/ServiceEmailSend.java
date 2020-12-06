@@ -1,6 +1,5 @@
-package com.bandtech.eventech.Service;
+package com.bandtech.eventech.Service.V1;
 
-import com.bandtech.eventech.Service.V1.EventService;
 import com.bandtech.eventech.Service.V2.DateFormatService;
 import com.bandtech.eventech.model.V1.EventMail;
 import org.apache.logging.log4j.LogManager;
@@ -44,8 +43,8 @@ public class ServiceEmailSend {
 
     public void sendEmail(Long eventId){
 
-       formattedDate = formatService.formatDate();
-       street = GetDataEvent(eventId).getAddress();
+         formattedDate = formatService.formatDate();
+         street = GetDataEvent(eventId).getAddress();
         name = GetDataEvent(eventId).getName();
         category = GetDataEvent(eventId).getCategory();
         price = GetDataEvent(eventId).getPrice();
