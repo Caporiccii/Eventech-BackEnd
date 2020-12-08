@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class UserJPA {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int idUser;
 
     private String nameUser;
     private String password;
@@ -36,7 +36,7 @@ public class UserJPA {
 
     public UserJPA(int id, String nameUser, String password, String surname, String email, String sex, LocalDate dateBorn
             , String cpf, String phone, String creationDate, int companyId, boolean isActive, boolean isCompany) {
-        this.id = id;
+        this.idUser = id;
         this.nameUser = nameUser;
         this.password = password;
         this.surname = surname;
@@ -51,12 +51,12 @@ public class UserJPA {
         this.isCompany = isCompany;
     }
 
-    public int getId() {
-        return id;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public String getName() {
