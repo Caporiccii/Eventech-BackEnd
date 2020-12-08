@@ -18,7 +18,7 @@ public class TicketJPA implements Serializable {
     public String name;
     public String initialDate;
     public String finalDate;
-    public int eventId;
+    public int event_Id;
     public int qtd;
     public int qtdPerPerson;
     public int buyer;
@@ -35,7 +35,7 @@ public class TicketJPA implements Serializable {
         this.name = name;
         this.initialDate = initialDate;
         this.finalDate = finalDate;
-        this.eventId = eventId;
+        this.event_Id = eventId;
         this.qtd = qtd;
         this.qtdPerPerson = qtdPerPerson;
         this.buyer = buyer;
@@ -76,12 +76,12 @@ public class TicketJPA implements Serializable {
         this.finalDate = finalDate;
     }
 
-    public int getEventId() {
-        return eventId;
+    public int getEvent_Id() {
+        return event_Id;
     }
 
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
+    public void setEvent_Id(int event_Id) {
+        this.event_Id = event_Id;
     }
 
     public int getQtd() {

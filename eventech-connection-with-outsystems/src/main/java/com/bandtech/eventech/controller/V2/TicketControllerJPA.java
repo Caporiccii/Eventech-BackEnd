@@ -70,7 +70,7 @@ public class TicketControllerJPA {
             ticketEncontrado.setName(ticket.getName());
             ticketEncontrado.setInitialDate((ticket.getInitialDate()));
             ticketEncontrado.setFinalDate(ticket.getFinalDate());
-            ticketEncontrado.setEventId(ticket.getEventId());
+            ticketEncontrado.setEvent_Id(ticket.getEvent_Id());
             ticketEncontrado.setQtd(ticket.getQtd());
             ticketEncontrado.setQtdPerPerson(ticket.getQtdPerPerson());
             ticketEncontrado.setBuyer(ticket.getBuyer());
@@ -105,10 +105,10 @@ public class TicketControllerJPA {
             return noContent().build();
     }
 
-    @GetMapping("/event/{fk_event}")
-    public ResponseEntity getTicketByEventId(@PathVariable("fk_event") Integer fk_event) {
+    @GetMapping("/event/{event_Id}")
+    public ResponseEntity getTicketByEventId(@PathVariable("event_Id") Integer eventId) {
 
-        List<TicketJPA> tickets = repository.getTicketsByEventId(fk_event);
+        List<TicketJPA> tickets = repository.getTicketsByEventId(eventId);
 
         if (tickets.isEmpty())
             return noContent().build();

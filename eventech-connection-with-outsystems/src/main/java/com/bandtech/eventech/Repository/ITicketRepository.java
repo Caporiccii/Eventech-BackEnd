@@ -17,6 +17,6 @@ public interface ITicketRepository extends JpaRepository<TicketJPA,Integer> {
     @Query("SELECT SUM(price) from TicketJPA")
     Double getTotalSaleTicket();
 
-    @Query(value = "select a from TicketJPA a where a.fk_event in :fk_event")
-    List<TicketJPA> getTicketsByEventId(@Param("fk_event") Integer fk_event);
+    @Query(value = "select a from TicketJPA a where a.event_Id in :event_Id")
+    List<TicketJPA> getTicketsByEventId(@Param("event_Id") Integer event_Id);
 }
