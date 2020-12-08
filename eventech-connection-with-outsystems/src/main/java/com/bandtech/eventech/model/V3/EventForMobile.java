@@ -62,6 +62,17 @@ public class EventForMobile {
         this.category = category;
     }
 
+    public EventForMobile(String name,BigDecimal price,
+                          String category,String cep,
+                          String initialDate, String initialHour) {
+        this.name = name;
+        this.category = category;
+        this.cep = cep;
+        this.price = price;
+        this.initialHour = initialHour;
+        this.initialDate = initialDate;
+    }
+
     public EventForMobile() {
     }
 

@@ -53,7 +53,7 @@ public class ServiceEmailSend {
     try {
 
         email.setTo("eventech.band@gmail.com");
-        email.setText("\"Olá, a Eventech vem lhe informar sobre um novo evento, que pode ser de seu interesse.\"\n" +
+        email.setText("\"Olá, a Eventec vem lhe informar sobre um novo evento, que pode ser de seu interesse.\"\n" +
                 "\n" +
                 "\n" +
                 "Nome do evento: " + name + "\n" +
@@ -65,7 +65,7 @@ public class ServiceEmailSend {
                 "" +
                 "\n" +
                 "Obrigado,\n" +
-                "Eventech");
+                "Eventec");
         email.setSubject("Evento Imperdivel!");
         mailSender.send(email);
         logger.debug("Envio de email realizado com sucesso!");

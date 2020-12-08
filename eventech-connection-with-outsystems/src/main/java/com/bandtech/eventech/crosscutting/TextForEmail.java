@@ -2,7 +2,7 @@ package com.bandtech.eventech.crosscutting;
 
 public class TextForEmail {
 
-   /* public String textEmail = "\"Olá, a Eventech vem lhe informar sobre um novo evento, que pode ser de seu interesse.\"\n" +
+   /* public String textEmail = "\"Olá, a Eventec vem lhe informar sobre um novo evento, que pode ser de seu interesse.\"\n" +
             "\n" +
             "\n" +
             "Nome do evento: " + name + "\n" +
@@ -14,6 +14,6 @@ public class TextForEmail {
             "" +
             "\n" +
             "Obrigado,\n" +
-            "Eventech";
+            "Eventec";
     */
 }
