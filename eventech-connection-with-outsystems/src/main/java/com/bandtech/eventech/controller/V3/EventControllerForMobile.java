@@ -35,6 +35,15 @@ private IEventForMobileRepository eventForMobileRepository;
             return ok(eventForMobile);
     }
 
+    @GetMapping("/users/{userId}")
+    public ResponseEntity getEventsByUser(@PathVariable("userId") int userId){
+        List<EventForMobile> eventForMobile = eventForMobileRepository.getEventsByUser(userId);
+        if (eventForMobile.isEmpty())
+            return noContent().build();
+        else
+            return ok(eventForMobile);
+    }
+
     @PostMapping
     public ResponseEntity postEvents(@RequestBody EventForMobile eventForMobile){
         eventForMobileRepository.save(eventForMobile);
