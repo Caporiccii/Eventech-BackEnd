@@ -30,6 +30,7 @@ public class LoginService  {
     private CompanyJPA company;
     private boolean result;
     private boolean isUpdated;
+    private Integer id_User;
     private final Logger logger = LogManager.getLogger(LoginService.class);
 
 
@@ -39,6 +40,7 @@ try {
     findUserEmailAndPassword(email, senha);
 
     for (UserJPA user : usuarios) {
+
         loginUser = user.getEmail();
         senhaUser = user.getPassword();
 
@@ -63,8 +65,15 @@ try {
 
     public void findUserEmailAndPassword(String email, String senha){
         usuarios = repository.getNameandPassword(email,senha);
+
         user= new UserJPA();
         usuarios.add(user);
+    }
+
+    public Integer returnId(String email, String senha){
+        id_User = repository.getIdNameandPassword(email,senha);
+
+        return id_User;
     }
 
 

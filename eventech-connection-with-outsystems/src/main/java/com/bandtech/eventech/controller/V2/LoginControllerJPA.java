@@ -15,20 +15,21 @@ public class LoginControllerJPA {
     private LoginService loginService;
     private UserJPA user;
     Boolean response = true;
+    private Integer id_User;
 
    @GetMapping ("/{email}/{senha}")
     public ResponseEntity logUser(@PathVariable("email") String email,
                                   @PathVariable("senha") String senha)
    {
        response = loginService.logUsu(email,senha);
-
+       id_User = loginService.returnId(email,senha);
        if (!response)
        {
            return badRequest().build();
        }
        else {
 
-           return ok().build();
+           return ok().body(id_User);
        }
    }
 

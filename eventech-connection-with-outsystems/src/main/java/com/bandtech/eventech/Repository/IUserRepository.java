@@ -12,4 +12,8 @@ public interface IUserRepository extends JpaRepository<UserJPA,Integer> {
     @Query("select a from UserJPA a where a.email in :email and a.password in :senha")
     List<UserJPA> getNameandPassword(@Param("email") String email,
                                      @Param("senha") String senha);
+
+    @Query("select a.idUser from UserJPA a where a.email in :email and a.password in :senha")
+    Integer getIdNameandPassword(@Param("email") String email,
+                                     @Param("senha") String senha);
 }
