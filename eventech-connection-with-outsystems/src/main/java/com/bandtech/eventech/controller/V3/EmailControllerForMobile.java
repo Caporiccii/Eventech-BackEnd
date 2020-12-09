@@ -20,4 +20,10 @@ public class EmailControllerForMobile {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/relate/{eventId}")
+    public ResponseEntity sendEmailRelate(@PathVariable("eventId") Integer eventId){
+        sendEmailServiceForMobile.sendEmailRelatorio(eventId);
+        return ResponseEntity.ok().build();
+    }
+
 }

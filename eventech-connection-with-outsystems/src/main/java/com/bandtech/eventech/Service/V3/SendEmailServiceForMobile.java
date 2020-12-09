@@ -1,5 +1,6 @@
 package com.bandtech.eventech.Service.V3;
 
+import com.bandtech.eventech.Repository.ITicketRepository;
 import com.bandtech.eventech.Repository.V3.IEventForMobileRepository;
 import com.bandtech.eventech.model.V3.EventForMobile;
 import org.apache.logging.log4j.LogManager;
@@ -19,6 +20,8 @@ public class SendEmailServiceForMobile {
     private JavaMailSender mailSender;
     @Autowired
     private IEventForMobileRepository eventForMobileRepository;
+    @Autowired
+    private ITicketRepository iTicketRepository;
     private Optional<EventForMobile> eventForMobileOptional;
     private EventForMobile eventForMobile;
     private String name;
@@ -85,5 +88,45 @@ try {
 }
     }
 
+    public Double getAllPrice(Integer eventId){
+        Double eventPrice = iTicketRepository.getAllPriceByEventid(eventId);
+    return  eventPrice;
+    }
+
+    public Integer getCountTicket(Integer eventId){
+        Integer countTicket = iTicketRepository.getAllTicketByEventid(eventId);
+      return  countTicket;
+    }
+
+    public Integer getCountLink(Integer idEventMobile){
+        Integer countLink = eventForMobileRepository.getLinks(idEventMobile);
+        return  countLink;
+    }
+    public void sendEmailRelatorio(Integer eventId){
+        mountEmailData(eventId);
+        email = new SimpleMailMessage();
+        try {
+            email.setTo("eventech.band@gmail.com");
+            email.setText("\"Olá, a Eventec vem lhe informar sobre o resultado so seu ultimo evento.\"\n" +
+                    "\n" +
+                    "\n" +
+                    "Nome do evento: " + name + "\n" +
+                    "Categoria do evento: " + category + " \n" +
+                    "Data e hora de início: " + initialDate + " às " + initialHour+  "\n" +
+                    "Quantidade de Links: "+getCountLink(eventId)+" \n" +
+                    "Quantidade de Ingressos: "+getCountTicket(eventId)+" \n" +
+                    "Lucro: R$:"+getAllPrice(eventId)+"\n" +
+                    "\n" +
+                    "" +
+                    "\n" +
+                    "Obrigado,\n" +
+                    "Eventec");
+            email.setSubject("Relatório!");
+            mailSender.send(email);
+            logger.debug("Envio de email realizado com sucesso!");
+        }catch (Exception exception){
+            logger.error(exception + " Não foi possivel realizar o envio do email!");
+        }
+    }
 
 }
