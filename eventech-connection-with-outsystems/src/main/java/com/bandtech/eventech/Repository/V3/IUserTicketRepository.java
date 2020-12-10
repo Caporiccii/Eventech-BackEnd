@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface IUserTicketRepository extends JpaRepository<UserTicketJPA, Integer> {
 
-    @Query("select a from UserTicketJPA a where a.userId = :user_id and a.statusId = :status_id")
+    @Query(value = "select * from user_ticketjpa where user_ticketjpa.user_id = user_id and user_ticketjpa.status_id = status_id", nativeQuery = true)
     List<UserTicketJPA> getUserTicketByUserIdAndStatus(@Param("user_id") Integer userId, @Param("status_id") Integer statusId);
 }
