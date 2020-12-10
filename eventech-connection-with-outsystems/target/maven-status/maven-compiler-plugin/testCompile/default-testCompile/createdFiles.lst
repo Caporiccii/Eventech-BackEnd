@@ -1,5 +1,5 @@
 com/bandtech/eventech/Service/V2/LoginServiceTest.class
-com/bandtech/eventech/Service/V2/HistoryServiceTest.class
 com/bandtech/eventech/Service/V2/DateFormatServiceTest.class
+com/bandtech/eventech/Service/V2/HistoryServiceTest.class
 com/bandtech/eventech/EventechRestTemplateApplicationTests.class
 com/bandtech/eventech/controller/V1/AdrressControllerTest.class

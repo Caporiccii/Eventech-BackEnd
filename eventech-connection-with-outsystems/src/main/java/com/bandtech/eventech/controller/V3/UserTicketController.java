@@ -1,7 +1,6 @@
 package com.bandtech.eventech.controller.V3;
 
 import com.bandtech.eventech.Repository.V3.IUserTicketRepository;
-import com.bandtech.eventech.model.V2.TicketJPA;
 import com.bandtech.eventech.model.V3.UserTicketJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,5 +33,20 @@ public class UserTicketController {
             return noContent().build();
         else
             return ok(tickets);
+    }
+
+    @DeleteMapping("/{userId}/status/{status}")
+    private ResponseEntity deleteTicketByUser(
+            @PathVariable("userId") Integer userId,
+            @PathVariable("status") Integer status
+    ){
+        if (this.repository.existsById(userId) || this.repository.existsById(status)) {
+            this.repository.deleteById(userId);
+            return ok().build();
+        }
+        else{
+            return notFound().build();
+
+        }
     }
 }

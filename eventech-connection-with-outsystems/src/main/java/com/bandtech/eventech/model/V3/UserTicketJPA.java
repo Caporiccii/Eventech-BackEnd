@@ -17,9 +17,22 @@ public class UserTicketJPA {
     private Integer ticketId;
     private String reservateDate;
     private Integer statusId;
+    private Integer eventId;
+    private String ticketName;
 
     public UserTicketJPA(){
 
+    }
+
+    public UserTicketJPA(Integer id_ticket_user, @NotNull Integer userId, @NotNull Integer ticketId,
+                         String reservateDate, Integer statusId, Integer eventId, String ticketName) {
+        this.id_ticket_user = id_ticket_user;
+        this.userId = userId;
+        this.ticketId = ticketId;
+        this.reservateDate = reservateDate;
+        this.statusId = statusId;
+        this.eventId = eventId;
+        this.ticketName = ticketName;
     }
 
     public UserTicketJPA(Integer id_ticket_user, @NotNull Integer userId, @NotNull Integer ticketId, String reservateDate, Integer statusId) {
@@ -68,5 +81,21 @@ public class UserTicketJPA {
 
     public void setStatusId(Integer statusId) {
         this.statusId = statusId;
+    }
+
+    public Integer getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Integer eventId) {
+        this.eventId = eventId;
+    }
+
+    public String getTicketName() {
+        return ticketName;
+    }
+
+    public void setTicketName(String ticketName) {
+        this.ticketName = ticketName;
     }
 }
