@@ -1,6 +1,9 @@
 package com.bandtech.eventech.controller.V3;
 
+import com.bandtech.eventech.Repository.ITicketRepository;
 import com.bandtech.eventech.Repository.V3.IEventForMobileRepository;
+import com.bandtech.eventech.model.V1.Ticket;
+import com.bandtech.eventech.model.V2.TicketJPA;
 import com.bandtech.eventech.model.V3.EventForMobile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
