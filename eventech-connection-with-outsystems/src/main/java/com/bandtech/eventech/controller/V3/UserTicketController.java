@@ -22,12 +22,12 @@ public class UserTicketController {
         return status(201).build();
     }
 
-    @GetMapping("/{userId}/status/{status}")
+    @GetMapping("/{userId}/status/{statusId}")
     private ResponseEntity getTicketByUser(
             @PathVariable("userId") Integer userId,
-            @PathVariable("status") Integer status
+            @PathVariable("statusId") Integer statusId
     ) {
-        List<UserTicketJPA> tickets = repository.getUserTicketByUserIdAndStatus(userId, status);
+        List<UserTicketJPA> tickets = repository.getUserTicketByUserIdAndStatus(userId, statusId);
 
         if (tickets.isEmpty())
             return noContent().build();
